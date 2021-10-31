@@ -1,21 +1,47 @@
 @use "variables";
 
 .main-header {
-  background: variables.$main-white;
+  background: variables.$main-blue;
   display: flex;
+  position: fixed;
   justify-content: space-between;
   align-items: center;
-  padding: 3.3rem 1.5rem;
+  padding: 1.5rem 3.6rem;
+  width: 100%;
+  top: 0;
+  z-index: 99;
 
-  &__logo-container {
+  @media (max-width: variables.$mobile) {
+    padding: 1.5rem 2rem 1.5rem .9rem;
+  }
+
+
+  &__logos-container {
     display: grid;
+    grid-auto-flow: column;
     grid-gap: 1.9rem;
+    align-items: center;
+
+    @media (max-width: variables.$mobile) {
+      grid-gap: 1.6rem;
+    }
+
   }
 
   &__logo-img {
     &._alcon {
       height: 3.251rem;
       width: 11.8rem;
+
+      @media (max-width: variables.$tablet) {
+        height: 3.5rem;
+        width: 3.5rem;
+      }
+
+      @media (max-width: variables.$mobile) {
+        height: 4.2rem;
+        width: 4.2rem;
+      }
     }
 
     &._my-eyes {
@@ -27,6 +53,41 @@
   &__vertical-line {
     height: 100%;
     width: .1rem;
-    background: variables.$main-blue;
+    background: variables.$main-white;
+  }
+}
+
+.navigation {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 3.5rem;
+  color: variables.$main-white;
+  align-items: center;
+
+  @media (max-width: variables.$mobile) {
+  }
+
+  &__menu {
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 1.9rem;
+
+    @media (max-width: variables.$mobile) {
+      display: none;
+    }
+  }
+
+  &__profile-btn {
+    & svg {
+      position: relative;
+      top: .15rem;
+      width: 2.8rem;
+      height: 2.8rem;
+
+      @media (max-width: variables.$mobile) {
+        width: 3.2rem;
+        height: 3.2rem;
+      }
+    }
   }
 }

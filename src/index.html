@@ -6,39 +6,72 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="scss/app.scss">
-    <script defer src="js/app.js"></script>
+    <script defer type="module" src="js/app.js"></script>
     <title>Alcon</title>
 </head>
 <body>
-<header class="main-header">
+<div data-rem-example class="js-rem-example"></div>
+<header data-header class="main-header">
     <div class="main-header__logos-container">
-        <a class="main-header__logo" href="https://www.moiglaza.ru/">
-            <svg class="main-header__logo-img _alcon">
-                <use xlink:href="images/sprite.svg#logo-alcon"></use>
-            </svg>
+        <a class="main-header__logo" target="_blank" href="https://www.moiglaza.ru/">
+            <picture class="main-header__logo-img _alcon">
+                <source media="(max-width: 1024px)" type="image/png"
+                        srcset="images/mobile/header/logo-alcon.png"/>
+                <img src="images/desktop/header/logo-alcon.png"
+                     alt="логотип Alcon">
+            </picture>
         </a>
         <div class="main-header__vertical-line"></div>
-        <a class="main-header__logo" href="https://www.moiglaza.ru/">
+        <a class="main-header__logo" target="_blank" href=" https://www.moiglaza.ru/club/">
             <picture class="main-header__logo-img _my-eyes">
-                <source media="(max-width: 666px)" type="image/png"
-                        srcset="images/mobile/logo-my-eyes.png"/>
-                <source media="(min-width: 667px)" type="image/png"
-                        srcset="images/desktop/logo-my-eyes.png">
-                <img src="images/desktop/logo-my-eyes.png"
-                     alt="логотип клуба привилегий мои глаза">
+                <source srcset="images/desktop/header/logo-my-eyes.webp" type="image/webp">
+                <img src="images/desktop/header/logo-my-eyes.png" alt="logo клуба привилегий мои глаза">
             </picture>
         </a>
     </div>
     <nav class="main-header__navigation navigation">
-        <ul class="navigation__container">
-            <li data-nav href="" class="navigation__item">Условия участия</li>
-            <li data-nav href="" class="navigation__item">Призы</li>
-            <li data-nav href="" class="navigation__item">Календарь розыгрышей</li>
+        <ul class="navigation__menu">
+            <li data-navigation="block-1" class="navigation__item _link">Условия участия</li>
+            <li data-navigation="block-2" class="navigation__item _link">Призы</li>
+            <li data-navigation="block-3" class="navigation__item _link">Календарь розыгрышей</li>
         </ul>
+        <button class="navigation__profile-btn">
+            <svg>
+                <use xlink:href="images/sprite.svg#profile"></use>
+            </svg>
+        </button>
     </nav>
 </header>
+<main data-main class="main-content">
+    <section data-block-1 class="block block-1">
+        <div class="block-1__content-container">
+            <h1 class="block-1__page-title">СНЕГОПАД<br> ПОДАРКОВ</h1>
+            <h1 class="block-1__title _main-title">от Alcon</h1>
+            <h2 class="block-1__subtitle">Новый год приближается —<br class="_tablet"> подарки умножаются!</h2>
+            <p class="block-1__text">С каждой неделей количество призов увеличивается.</p>
+            <p class="block-1__text _desktop">Следите за календарем розыгрышей, загружайте чеки и выигрывайте
+            </p>
+            <button data-navigation="block-1" class="block-1__btn _main-btn _icon _orange">
+                <span>Участвовать</span>
+                <svg>
+                    <use xlink:href="images/sprite.svg#arrow"></use>
+                </svg>
+            </button>
+        </div>
+    </section>
 
-<footer>
+</main>
+<footer class="main-footer">
+    <p class="main-footer__text">* Сроки проведения акции: с 22 ноября 2021 г. по 24 декабря 2021 г. Информация об
+        организаторе, правилах
+        проведения акции/конкурса, количестве призов, сроках, месте и порядке их получения указаны в Правилах
+        акции/конкурса и размещены на сайте <a href="https://moiglaza.ru">moiglaza.ru</a></p>
+    <a class="main-footer__link" target="_blank"
+       href="https://www.moiglaza.ru/upload/uf/380/Pravila-Provedeniya_-Aktsiya_P1.pdf">Правила акции</a>
+</footer>
+</body>
+</html>
+
 
 <!--    <picture className="test-card__img _margin-top">-->
 <!--        <source media="(max-width: 666px)" type="image/png"-->
@@ -48,6 +81,3 @@
 <!--        <img src="/local/templates/books/images/landing/test/test-final-mobile.png"-->
 <!--             alt="test-img" loading="lazy">-->
 <!--    </picture>-->
-</footer>
-</body>
-</html>

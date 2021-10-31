@@ -1,0 +1,39 @@
+@use "variables";
+
+.main-footer {
+  display: grid;
+  grid-auto-flow: column;
+  background: variables.$dark-blue;
+  padding: 2rem 7rem;
+  grid-gap: 9rem;
+  justify-content: end;
+  align-items: start;
+  text-align: center;
+
+  @media (max-width: variables.$tablet) {
+    padding: 2rem 4rem;
+    grid-gap: 6rem;
+    text-align: left;
+  }
+  @media (max-width: variables.$mobile) {
+    grid-auto-flow: row;
+    grid-gap: 3.2rem;
+    padding: 3.2rem 1.6rem 6.6rem;
+  }
+
+  &__text {
+    max-width: 84.5rem;
+    font-size: 1rem;
+    line-height: 1.4rem;
+  }
+
+  &__link {
+    font-size: 1.8rem;
+    line-height: 2.3rem;
+    color: variables.$opacity-white;
+
+    @media (max-width: variables.$tablet) {
+      font-size: 1.6rem;
+    }
+  }
+}
