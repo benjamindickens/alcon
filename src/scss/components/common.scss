@@ -1,0 +1,74 @@
+@use "variables";
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 3.125vw;
+
+  @media (min-width: variables.$mobile) {
+    font-size: 0.69vw; // 100/1440*10
+  }
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizelegibility;
+}
+
+.js-rem-example {
+  height: 1rem;
+  position: absolute;
+  visibility: hidden;
+}
+
+body {
+  margin: 0;
+  font-family: variables.$font-regular;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  font-weight: 400;
+  opacity: 1;
+  @media (min-width: variables.$mobile) {
+  }
+}
+
+input {
+  outline: none;
+  border-color: transparent;
+}
+
+main, img {
+  display: block;
+}
+
+img {
+  max-width: 100%;
+}
+
+picture img {
+  width: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
+}
+
+h1 {
+  font-size: 14px;
+}

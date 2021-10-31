@@ -1,0 +1,32 @@
+@use "variables";
+
+.main-header {
+  background: variables.$main-white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3.3rem 1.5rem;
+
+  &__logo-container {
+    display: grid;
+    grid-gap: 1.9rem;
+  }
+
+  &__logo-img {
+    &._alcon {
+      height: 3.251rem;
+      width: 11.8rem;
+    }
+
+    &._my-eyes {
+      width: 14rem;
+      height: 2.83rem;
+    }
+  }
+
+  &__vertical-line {
+    height: 100%;
+    width: .1rem;
+    background: variables.$main-blue;
+  }
+}
