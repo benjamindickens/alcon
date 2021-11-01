@@ -13,7 +13,7 @@
   grid-template-columns: 1fr 1fr;
   grid-template-areas:  "title title"
                         "options preview"
-                        "btn right";
+                        "btn preview";
 
   @media (max-width: variables.$tablet) {
     height: 79.9rem;
@@ -25,13 +25,24 @@
 
   @media (max-width: variables.$mobile) {
     height: 135.6rem;
-    padding: 3.8rem 0 0;
+    padding: 3.5rem 0 0;
     background: url("../images/mobile/block-4/background.svg") no-repeat center;
     background-size: cover;
+    justify-items: center;
+
+    grid-template-columns: 1fr;
+    grid-template-areas:  "title"
+                        "preview"
+                        "options"
+                        "btn";
   }
 
   &__title {
     grid-area: title;
+
+    @media (max-width: variables.$mobile) {
+      text-align: center;
+    }
   }
 
   &__options-container {
@@ -41,6 +52,7 @@
     grid-gap: 2.3rem 3.2rem;
     grid-template-columns: repeat(2, auto);
     justify-content: start;
+    align-content: start;
     grid-area: options;
 
     @media (max-width: variables.$tablet) {
@@ -50,7 +62,10 @@
     }
 
     @media (max-width: variables.$mobile) {
+      margin-top: 23.7rem;
       margin-left: unset;
+      grid-template-columns: 1fr;
+      justify-items: center;
     }
   }
 
@@ -58,6 +73,14 @@
     text-align: center;
     font-size: 1.8rem;
     line-height: 2.3rem;
+
+    @media (max-width: variables.$mobile) {
+      display: grid;
+      grid-template-columns: auto 2rem auto;
+      grid-template-areas: "week dash gifts"
+                            "btn btn btn";
+      justify-content: center;
+    }
 
     & span {
       font-family: variables.$font-bold;
@@ -70,6 +93,7 @@
     background: variables.$dark-blue;
     margin-top: 1.9rem;
     padding: 1rem 2.3rem;
+    transition: color .3s, background .3s;
 
     @media (max-width: variables.$tablet) {
       margin-top: .8rem;
@@ -77,8 +101,27 @@
     }
 
     @media (max-width: variables.$mobile) {
-
+      grid-area: btn;
+      width: 28.8rem;
     }
+
+    &:hover {
+      color: variables.$main-white;
+      background: variables.$light-blue;
+    }
+
+    &._active {
+      color: variables.$main-white;
+      background: variables.$light-blue;
+    }
+  }
+
+  &__week {
+    justify-self: end;
+  }
+
+  &__gifts {
+    justify-self: start;
   }
 
   &__buy-btn {
@@ -92,29 +135,35 @@
     & svg {
       width: 3rem !important;
       height: 3rem !important;
+
+      @media (max-width: variables.$mobile) {
+        width: 2rem !important;
+        height: 2rem !important;
+      }
     }
 
     & span {
       font-size: 1.6rem;
       font-family: variables.$font-bold;
       text-transform: none;
+
+      @media (max-width: variables.$mobile) {
+        line-height: 1.6rem;
+      }
     }
 
     @media (max-width: variables.$tablet) {
       margin-left: 4.8rem;
-      margin-top: 5.2rem;
+      margin-top: 5.6rem;
     }
 
     @media (max-width: variables.$mobile) {
       margin-left: unset;
+      margin-top: 3.2rem;
+      height: 5.6rem;
+      width: 28.8rem;
+      padding: 0 2.2rem;
     }
-  }
-}
-
-.block-4__option._active {
-  & .block-4__option-btn {
-    color: variables.$main-white;
-    background: variables.$light-blue;
   }
 }
 
@@ -123,14 +172,44 @@
   grid-area: preview;
   display: grid;
   justify-items: center;
+  align-content: start;
   margin-right: 7rem;
   justify-self: end;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s;
+
+  @media (max-width: variables.$tablet) {
+    margin-top: 4rem;
+    margin-right: 4.8rem;
+  }
+
+  @media (max-width: variables.$mobile) {
+    margin-top: 2.4rem;
+    margin-right: unset;
+    justify-self: center;
+  }
+
+  &._show {
+    opacity: 1;
+    visibility: visible;
+  }
 
   &__title {
     font-weight: 700;
     font-size: 3.6rem;
     line-height: 4.6rem;
     font-family: variables.$font-bold;
+
+    @media (max-width: variables.$tablet) {
+      font-size: 1.8rem;
+      line-height: 2.9rem;
+    }
+
+    @media (max-width: variables.$mobile) {
+      font-size: 2rem;
+      line-height: 2.5rem;
+    }
   }
 
   &__info-container {
@@ -144,6 +223,11 @@
     font-size: 1.4rem;
     line-height: 1.8rem;
     border: .1rem solid variables.$main-white;
+
+    @media (max-width: variables.$mobile) {
+      grid-gap: 1rem;
+      padding: 1.3rem 1.2rem;
+    }
   }
 
   &__name {
@@ -157,6 +241,17 @@
     grid-gap: 1.5rem;
     display: grid;
     grid-template-columns: repeat(2, 15.2rem);
+
+
+    @media (max-width: variables.$tablet) {
+      margin-top: 2.4rem;
+      grid-template-columns: repeat(2, 13rem);
+      grid-gap: 2.4rem;
+    }
+
+    @media (max-width: variables.$mobile) {
+      grid-gap: 1.6rem;
+    }
   }
 
 
@@ -170,6 +265,16 @@
     & img {
       width: 15.2rem;
       height: 15.2rem;
+
+
+      @media (max-width: variables.$tablet) {
+        width: 13rem;
+        height: 13rem;
+      }
+
+      @media (max-width: variables.$mobile) {
+
+      }
     }
   }
 
@@ -183,7 +288,7 @@
     padding: 1rem 2.1rem;
   }
 
-  &__description{
+  &__description {
     font-size: 1.4rem;
     text-align: center;
   }

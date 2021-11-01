@@ -158,7 +158,8 @@ a, a:active, a:hover {
   }
 
   @media (max-width: variables.$mobile) {
-    margin-left: 1.6rem;
+    margin-left: 0;
+    text-align: center;
   }
 }
 
@@ -221,6 +222,13 @@ a, a:active, a:hover {
 ._desktop {
   @media (max-width: variables.$tablet) {
     display: none;
+  }
+}
+
+._mobile {
+  display: none;
+  @media (max-width: variables.$mobile) {
+    display: block;
   }
 }
 
