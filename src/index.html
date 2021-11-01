@@ -59,8 +59,9 @@
             </button>
         </div>
     </section>
+
     <section data-block-2 class="block block-2">
-        <h1 class="block-2__title _main-title _blue">
+        <h1 class="block-2__title _section-title _main-title _blue">
             Более 130 призов!
         </h1>
         <div class="block-2__gifts-container">
@@ -83,7 +84,7 @@
                     <source media="(max-width: 666px)" type="image/png"
                             srcset="images/mobile/block-2/watches.png"/>
                     <img src="images/desktop/block-2/watches.png"
-                         alt="ноутбук с чекбоксы">
+                         alt="часы">
                 </picture>
                 <h2 class="gift-card__title">Электронные часы
                     Apple Watch</h2>
@@ -97,11 +98,99 @@
                     <source media="(max-width: 666px)" type="image/png"
                             srcset="images/mobile/block-2/scores-300.png"/>
                     <img src="images/desktop/block-2/scores-300.png"
-                         alt="ноутбук с чекбоксы">
+                         alt="300 балов">
                 </picture>
                 <h2 class="gift-card__title">Баллы Клуба привилегий "МоиГлаза" </h2>
                 <p class="gift-card__description">Гарантированный приз каждому участнику</p>
                 <h3 class="gift-card__subtitle">Проигравших не будет!</h3>
+            </div>
+        </div>
+    </section>
+
+    <section class="block block-4">
+        <h1 class="block-4__title _section-title _main-title _white">
+            Календарь розыгрышей
+        </h1>
+        <div class="block-4__options-container">
+            <div class="block-4__option">
+                <div class="block-4__week">Неделя <span>1</span></div>
+                <div class="block-4__gifts"><span>11</span> призов!</div>
+                <button data-week="1" class="block-4__option-btn _round">22.11 — 28.11</button>
+            </div>
+
+            <div class="block-4__option">
+                <div class="block-4__week">Неделя <span>2</span></div>
+                <div class="block-4__gifts"><span>18</span> призов!</div>
+                <button data-week="2" class="block-4__option-btn _round">29.11 — 5.12</button>
+            </div>
+
+            <div class="block-4__option">
+                <div class="block-4__week">Неделя <span>3</span></div>
+                <div class="block-4__gifts"><span>25</span> призов!</div>
+                <button data-week="3" class="block-4__option-btn _round">6.12 — 12.12</button>
+            </div>
+
+            <div class="block-4__option">
+                <div class="block-4__week">Неделя <span>4</span></div>
+                <div class="block-4__gifts"><span>32</span> приза!</div>
+                <button data-week="4" class="block-4__option-btn _round">13.12 — 19.12</button>
+            </div>
+
+            <div class="block-4__option">
+                <div class="block-4__week">Неделя <span>5</span></div>
+                <div class="block-4__gifts"><span>52</span> приза!</div>
+                <button data-week="5" class="block-4__option-btn _round">20.12 — 24.12</button>
+            </div>
+        </div>
+
+        <a href="https://www.moiglaza.ru/where-to-buy/" target="_blank" class="block-4__buy-btn _main-btn _white _icon">
+            <span>Где купить и подобрать продукты ALCON</span>
+            <svg>
+                <use xlink:href="images/sprite.svg#arrow"></use>
+            </svg>
+        </a>
+
+
+        <div data-week-info="container" class="block-4__week-info week-info">
+            <h2 data-week-info="week" class="week-info__title">Неделя 1</h2>
+            <div class="week-info__info-container">
+                <div data-week-info="dates" class="week-info__item">
+                    <div class="week-info__name">Срок загрузки чеков:</div>
+                    <div class="week-info__dates">22.11.21 — 28.11.21</div>
+                </div>
+                <div data-week-info="draw" class="week-info__item">
+                    <div class="week-info__name">Розыгрыш:</div>
+                    <div class="week-info__dates">3 декабря 2021</div>
+                </div>
+            </div>
+
+            <div class="week-info__gifts-container">
+                <div class="week-info__gift">
+                    <picture class="week-info__img">
+                        <source media="(max-width: 666px)" type="image/png"
+                                srcset="images/mobile/block-4/laptop.png"/>
+                        <img src="images/desktop/block-4/laptop.png"
+                             alt="картинка ноутбука с чекбоксами">
+                    </picture>
+                    <div data-week-info="amount" class="week-info__num-bar _round">x10</div>
+                    <div class="week-info__description">
+                        Digital-подписки на сервисы
+                    </div>
+                </div>
+
+                <div class="week-info__gift">
+                    <picture class="week-info__img">
+                        <source media="(max-width: 666px)" type="image/png"
+                                srcset="images/mobile/block-4/watches.png"/>
+                        <img src="images/desktop/block-4/watches.png"
+                             alt="часы">
+                    </picture>
+                    <div data-week-info="amount" class="week-info__num-bar _round">x1</div>
+                    <div class="week-info__description">
+                        Apple Watch Series 7
+                    </div>
+                </div>
+
             </div>
         </div>
 

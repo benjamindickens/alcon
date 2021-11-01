@@ -19,16 +19,6 @@
   }
 
   &__title {
-    margin-left: 5.5rem;
-
-    @media (max-width: variables.$tablet) {
-      margin-left: 4rem;
-
-    }
-
-    @media (max-width: variables.$mobile) {
-      margin-left: 1.6rem;
-    }
   }
 
   &__gifts-container {

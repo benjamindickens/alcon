@@ -9,6 +9,10 @@
   justify-content: end;
   align-items: start;
   text-align: center;
+  z-index: 2;
+  position: absolute;
+  width: 100%;
+  bottom: -0.2rem;
 
   @media (max-width: variables.$tablet) {
     padding: 2rem 4rem;
@@ -19,6 +23,7 @@
     grid-auto-flow: row;
     grid-gap: 3.2rem;
     padding: 3.2rem 1.6rem 6.6rem;
+    position: static;
   }
 
   &__text {

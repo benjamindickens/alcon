@@ -46,6 +46,7 @@ body {
   line-height: 2.4rem;
   font-weight: 400;
   opacity: 1;
+  position: relative;
   @media (min-width: variables.$mobile) {
   }
 }
@@ -148,6 +149,19 @@ a, a:active, a:hover {
   }
 }
 
+._section-title {
+  margin-left: 5.5rem;
+
+  @media (max-width: variables.$tablet) {
+    margin-left: 4rem;
+
+  }
+
+  @media (max-width: variables.$mobile) {
+    margin-left: 1.6rem;
+  }
+}
+
 .main-content {
   margin-top: 6.8rem;
 
@@ -158,7 +172,6 @@ a, a:active, a:hover {
 
 ._main-btn {
   border-radius: 94px;
-  padding: 5.5rem;
   height: 6.3rem;
   display: grid;
   align-items: center;
@@ -187,13 +200,21 @@ a, a:active, a:hover {
   }
 
   &._white {
-    color: variables.$main-blue;
+    color: variables.$dark-blue;
     background: variables.$main-white;
+
+    & svg {
+      fill: variables.$dark-blue;
+    }
   }
 
   &._orange {
     color: variables.$main-white;
     background: variables.$main-orange;
+
+    & svg {
+      fill: variables.$main-white;
+    }
   }
 }
 
@@ -208,6 +229,10 @@ a, a:active, a:hover {
   @media (max-width: variables.$tablet) {
     display: block;
   }
+}
+
+._round {
+  border-radius: 112.5px;
 }
 
 @media (max-width: variables.$tablet) {
