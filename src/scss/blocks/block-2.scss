@@ -1,0 +1,151 @@
+@use "../components/variables";
+
+.block-2 {
+  padding: 5.8rem 0 8.2rem;
+  color: variables.$main-blue;
+  background: url("../images/desktop/block-2/background.svg") no-repeat center;
+  background-size: cover;
+
+  @media (max-width: variables.$tablet) {
+    padding: 4.8rem 0 5.4rem;
+    background: url("../images/tablet/block-2/background.svg") no-repeat center;
+    background-size: cover;
+  }
+
+  @media (max-width: variables.$mobile) {
+    padding: 3.2rem 0 4.8rem;
+    background: url("../images/mobile/block-2/background.svg") no-repeat center;
+    background-size: cover;
+  }
+
+  &__title {
+    margin-left: 5.5rem;
+
+    @media (max-width: variables.$tablet) {
+      margin-left: 4rem;
+
+    }
+
+    @media (max-width: variables.$mobile) {
+      margin-left: 1.6rem;
+    }
+  }
+
+  &__gifts-container {
+    margin-top: 5.9rem;
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 4.9rem;
+    justify-content: center;
+    align-content: start;
+
+
+    @media (max-width: variables.$tablet) {
+      margin-top: 4rem;
+      grid-gap: 4rem;
+    }
+
+    @media (max-width: variables.$mobile) {
+      grid-auto-flow: row;
+      margin-top: 2.4rem;
+      grid-gap: 3.2rem;
+      justify-items: center;
+    }
+  }
+}
+
+.gift-card {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  align-content: start;
+  width: 28rem;
+
+  @media (max-width: variables.$tablet) {
+    width: 26rem;
+  }
+
+  @media (max-width: variables.$mobile) {
+    width: 20rem;
+  }
+
+  &._scores {
+    width: 33.8rem;
+
+
+    @media (max-width: variables.$tablet) {
+      width: 26rem;
+    }
+
+    @media (max-width: variables.$mobile) {
+      width: 28rem;
+    }
+  }
+
+
+  &__img {
+    & img {
+      width: 28rem;
+      height: 27.6rem;
+
+      @media (max-width: variables.$tablet) {
+        width: 21rem;
+        height: 21rem;
+      }
+
+      @media (max-width: variables.$mobile) {
+        width: 16rem;
+        height: 16rem;
+      }
+    }
+  }
+
+  &__title {
+    font-family: variables.$font-bold;
+    font-weight: 700;
+    font-size: 2.6rem;
+    line-height: 3.3rem;
+    margin-top: 2.6rem;
+
+
+    @media (max-width: variables.$tablet) {
+      font-size: 2rem;
+      line-height: 2.5rem;
+      margin-top: 1.6rem;
+    }
+  }
+
+  &__description {
+    margin-top: 2.9rem;
+
+    @media (max-width: variables.$tablet) {
+      margin-top: 1.6rem;
+    }
+
+    @media (max-width: variables.$mobile) {
+      font-size: 1.4rem;
+      margin-top: .9rem;
+    }
+  }
+
+  &__subtitle {
+    font-family: variables.$font-bold;
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 2.6rem;
+    margin-top: 3.1rem;
+
+
+    @media (max-width: variables.$tablet) {
+      font-size: 1.6rem;
+      line-height: 2.3rem;
+      margin-top: 1.6rem;
+    }
+
+    @media (max-width: variables.$mobile) {
+      font-size: 1.4rem;
+      line-height: 2rem;
+    }
+  }
+
+}
