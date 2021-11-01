@@ -1,11 +1,12 @@
 const weeksBtn = document.querySelectorAll("[data-week]");
 const infoContainer = document.querySelector('[data-week-info="container"]');
-const infoWeek= document.querySelector('[data-week-info="week"]');
+const infoWeek = document.querySelector('[data-week-info="week"]');
 const infoDates = document.querySelector('[data-week-info="dates"]');
 const infoDraw = document.querySelector('[data-week-info="draw"]');
 const infoSubscription = document.querySelector('[data-week-info="subscription"]');
 const infoWatches = document.querySelector('[data-week-info="watches"]');
 let activeWeek = null;
+let activeWeekTl = null;
 const eventTime = {};
 const giftsInfo = {
     'week-1': {
@@ -40,12 +41,18 @@ const giftsInfo = {
     }
 }
 const setActiveBtn = (btn) => {
+    clearTimeout(activeWeekTl);
     if (document.querySelector("._active[data-week]")) {
         document.querySelector("._active[data-week]").classList.remove("_active")
     }
     btn.classList.add("_active");
     activeWeek = btn.dataset.week;
-    setCurrentGifts(activeWeek);
+    infoContainer.classList.remove("_show");
+    activeWeekTl = setTimeout(() => {
+        setCurrentGifts(activeWeek);
+        infoContainer.classList.add("_show");
+    }, 200)
+
 }
 
 const setCurrentGifts = (currentWeek) => {

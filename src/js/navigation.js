@@ -1,5 +1,5 @@
 const navigation = {
-    navigationLinks: document.querySelectorAll("[data-navigate]"),
+    navigationLinks: document.querySelectorAll("[data-navigation]"),
     handleNavigation(link) {
         const negativeMargin = ((isMobile) ? 3 : 6) * currentRem;
         const navTarget = link.dataset.navigation;
