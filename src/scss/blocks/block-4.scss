@@ -3,7 +3,7 @@
 .block-4 {
   height: 87rem;
   overflow: hidden;
-  background: url("../images/desktop/block-4/background.svg") no-repeat center;
+  background: url("../images/desktop/block-4/background.png") no-repeat center;
   background-size: cover;
   padding: 5.5rem 0 0;
   color: variables.$main-white;
@@ -18,7 +18,7 @@
   @media (max-width: variables.$tablet) {
     height: 79.9rem;
     padding: 4.8rem 0 0;
-    background: url("../images/tablet/block-4/background.svg") no-repeat center;
+    background: url("../images/tablet/block-4/background.png") no-repeat center;
     background-size: cover;
 
   }
@@ -154,7 +154,7 @@
 
     @media (max-width: variables.$tablet) {
       margin-left: 4.8rem;
-      margin-top: 5.6rem;
+      margin-top: 6.15rem;
     }
 
     @media (max-width: variables.$mobile) {

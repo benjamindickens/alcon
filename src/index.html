@@ -31,7 +31,6 @@
     </div>
     <nav class="main-header__navigation navigation">
         <ul class="navigation__menu">
-            <li data-navigation="block-3" class="navigation__item _link">Условия участия</li>
             <li data-navigation="block-2" class="navigation__item _link">Призы</li>
             <li data-navigation="block-4" class="navigation__item _link">Календарь розыгрышей</li>
         </ul>
@@ -108,7 +107,72 @@
     </section>
 
     <section data-block-3 class="block block-3">
+        <div id="app">
+            <h1 class="block-3__title _section-title _main-title _white">
+                Участвовать в розыгрыше
+            </h1>
+            <div class="block-3__stages-container">
+                <div class="block-3__stage _first">
+                    Купите с 22 ноября 2021 г. по 24 декабря 2021 г.** любой продукт Alcon*** и сохраните чек
+                </div>
 
+                <div class="block-3__stage authorisation">
+                    <transition name="fade">
+                        <div v-if="authMethod === 'phone'" class="authorisation__phone-block">
+                            <div class="authorisation__title">Авторизуйтесь или зарегистрируйтесь</div>
+                            <transition name="fade">
+                                <div v-if="gettingPhoneCode" @focusin="errors.phoneCode = ''"
+                                     :class="{'_error': errors.phoneCode }"
+                                     class="code__phone-code-container">
+                                    <div class="code__phone-code-box"></div>
+                                    <div class="code__phone-code-box"></div>
+                                    <div class="code__phone-code-box"></div>
+                                    <div class="code__phone-code-box"></div>
+                                    <input maxlength="4" v-model="formData.phoneCode"
+                                           class="code__phone-code-input" type="text">
+                                    <button class="code__switcher _underlined" @click="sendCodeToPhone">{{countDown ? `Получить новый можно через 00:${convertedCountdown}` : "Получить новый код"}}
+                                    </button>
+                                </div>
+                                <div v-else class="authorisation__phone-input-container">
+                                    <div @focusin="errors.phone = ''"
+                                         :class="{'_ok': validation.phone,'_error': errors.phone}"
+                                         class="authorisation__input-container _main-input-container _phone">
+                                        <masked-input class="authorisation__input _email _main-input"
+                                                      v-model="formData.phone"
+                                                      mask="\+\7 (111) 111-11-11" placeholder="+7 (___) ___-__-__"/>
+                                    </div>
+                                    <button class="authorisation__btn _form-btn" @click="sendCodeToPhone">получить код
+                                    </button>
+                                    <button class="authorisation__switcher _underlined">Войти по логину и паролю
+                                    </button>
+                                </div>
+                            </transition>
+                        </div>
+                    </transition>
+                </div>
+                <div class="block-3__stage download-check"
+                     :class="{'_disabled': stage !== 3}">
+                    <div class="download-check__title">Загрузите чек о покупке**</div>
+                    <div class="download-check__container">
+                        <button class="download-check__btn _form-btn">Сканировать QR-код</button>
+                        <button class="download-check__btn _form-btn">Загрузить чек</button>
+                        <button class="download-check__btn _form-btn">Отправить данные чека</button>
+                    </div>
+                </div>
+
+                <div class="block-3__stage _final">
+                    Получите гарантированный приз — <span class="_bold">300 баллов</span> Клуба привилегий «Моиглаза»
+                    и шанс выиграть крутые призы
+                </div>
+
+                <div class="block-3__tooltips">
+                    <p>** Стоимость каждого продукта Alcon в чеке должна составлять более 399 руб.</p>
+                    <p>*** Я подтверждаю, что не являюсь сотрудником, членом семьи сотрудника Организатора, Оператора,
+                        аффилированных с Организатором или Оператором лиц, субподрядчиков Оператора в рамках Кампании,
+                        оптик, аптек, дистрибьюторов Организатора</p>
+                </div>
+            </div>
+        </div>
     </section>
 
     <section data-block-4 class="block block-4">
@@ -215,5 +279,7 @@
        href="https://www.moiglaza.ru/upload/uf/380/Pravila-Provedeniya_-Aktsiya_P1.pdf">Правила акции</a>
 </footer>
 </body>
+
+
 </html>
 
