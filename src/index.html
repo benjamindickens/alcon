@@ -108,6 +108,22 @@
 
     <section data-block-3 class="block block-3">
         <div id="app">
+            <transition name="fade">
+                <div v-if="!popupOpened" class="popup-overlay popup">
+                    <div class="popup__container">
+                        <h2 class="popup__title">{{ currentPopupTitle }}</h2>
+                        <div class="popup__input-check-form input-check-form">
+
+
+                            <button class="input-check-form__btn _form-btn"
+                                    :class="{'_disabled': !validation.sum || !validation.date ||!validation.time ||!validation.fn || !validation.fd || !validation.fdp}"
+                                    @click="uploadData">ЗАГРУЗИТЬ ДАННЫЕ
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </transition>
             <h1 class="block-3__title _section-title _main-title _white">
                 Участвовать в розыгрыше
             </h1>
@@ -171,7 +187,8 @@
                                    placeholder="Введите e-mail">
                         </div>
 
-                        <div @focusin="errors.agreement = ''" class="new-user-form__agreement":class="{'_error': errors.agreement}">
+                        <div @focusin="errors.agreement = ''" class="new-user-form__agreement"
+                             :class="{'_error': errors.agreement}">
                             <input class="new-user-form__checkbox" type="checkbox" id="agreement"
                                    v-model="formData.agreement">
                             <label class="new-user-form__agreement-label" for="agreement">
@@ -190,7 +207,6 @@
                         </button>
 
                     </div>
-
                     <div v-else-if="gettingPhoneCode" @focusin="errors.phoneCode = ''"
                          :class="{'_error': errors.phoneCode }"
                          class="code-form">
@@ -199,7 +215,9 @@
                         <div class="code-form__phone-code-box"></div>
                         <div class="code-form__phone-code-box"></div>
                         <div class="code-form__phone-code-box"></div>
-                        <input maxlength="4" v-model="formData.phoneCode"
+                        <masked-input class="code-form__phone-code-input"
+                                      v-model="formData.phoneCode"
+                                      mask="####" placeholder-char="&#8205" placeholder=""/>
                                class="code-form__phone-code-input" type="text">
                         <button class="code-form__switcher _underlined" @click="sendCodeToPhone">
                             {{
@@ -213,7 +231,7 @@
                              class="phone-form__input-container _main-input-container _phone">
                             <div class="error-message">{{ errors.phone }}</div>
                             <masked-input class="phone-form__input _email _main-input"
-                                          v-model="formData.phone"
+                                          @input="formData.phone = arguments[1]"
                                           mask="\+\7 (111) 111-11-11" placeholder="+7 (___) ___-__-__"/>
                         </div>
                         <button class="phone-form__btn _form-btn" @click="sendCodeToPhone">получить код

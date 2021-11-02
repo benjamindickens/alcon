@@ -1,0 +1,48 @@
+@use "../variables";
+
+.popup {
+  display: none;
+  opacity: 1;
+  z-index: 20;
+  position: fixed;
+  align-items: center;
+  justify-items: center;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+
+  &__container {
+    position: relative;
+    margin-top: 6rem;
+    height: 53.4rem;
+    width: 96.8rem;
+    display: grid;
+    background: url("../images/desktop/block-3/popup-background.svg") no-repeat center;
+    background-size: cover;
+
+    &:after {
+      position: absolute;
+      top: 13.6rem;
+      left: 4.6rem;
+      width: 9.5rem;
+      height: 15.7rem;
+      content: "";
+      display: block;
+      background: url("../images/desktop/block-3/popup-check.png") no-repeat center;
+      background-size: cover;
+    }
+  }
+
+
+  &__title {
+    font-family: "OpenSans-Bold";
+    font-weight: 700;
+    line-height: 4.4rem;
+    font-size: 4.3rem;
+    margin-top: 3.1rem;
+    margin-left: 4.6rem;
+  }
+}

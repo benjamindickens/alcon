@@ -363,6 +363,13 @@ a, a:active, a:hover {
   }
 }
 
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
 @media (max-width: variables.$tablet) {
 
 }

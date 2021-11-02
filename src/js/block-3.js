@@ -12,8 +12,10 @@ const app = new Vue({
             authMethod: "phone",
             gettingPhoneCode: false,
             countDown: 0,
+            popupOpened: false,
             registerNewUser: false,
             registeredUser: false,
+            currentPopupTitle: "Введите данные чека",
             formData: {
                 phone: "",
                 phoneCode: "",
@@ -22,6 +24,12 @@ const app = new Vue({
                 rePassword: "",
                 agreement: "",
                 name: "",
+                sum: "",
+                date: "",
+                time: "",
+                fn: "",
+                fd: "",
+                fdp: "",
             },
             errors: {
                 phoneCode: "",
@@ -31,6 +39,12 @@ const app = new Vue({
                 rePassword: "",
                 agreement: "",
                 name: "",
+                sum: "",
+                date: "",
+                time: "",
+                fn: "",
+                fd: "",
+                fdp: "",
             },
             validation: {
                 phone: "",
@@ -40,11 +54,17 @@ const app = new Vue({
                 rePassword: "",
                 agreement: "",
                 name: "",
+                sum: "",
+                date: "",
+                time: "",
+                fn: "",
+                fd: "",
+                fdp: "",
             }
         }
     }, watch: {
         'formData.phone'(val) {
-            if ([...val].pop() !== "_") {
+            if (![...val].includes("_")) {
                 this.validation.phone = true;
             } else if (this.validation.phone) {
                 this.validation.phone = false;
@@ -71,10 +91,7 @@ const app = new Vue({
             this.checkIsEmpty(val, "agreement")
         },
         'formData.phoneCode'(val) {
-            if (val.length > 4) {
-                this.formData.phoneCode = val.splice(0, 3);
-            }
-            if (val.length === 4) {
+            if (![...val].some(isNaN)) {
                 //reuest to check pincode
                 const rightPin = "0000";
                 let alreadyExist = false;
@@ -105,6 +122,9 @@ const app = new Vue({
             } else {
                 this.validation[field] = false;
             }
+        },
+        uploadData(){
+            console.log("beb")
         },
         registration() {
             let validData = true;
@@ -143,7 +163,7 @@ const app = new Vue({
                 password: this.formData.password
             }
             //    get data address of email end password
-            if (data.password != 0) {
+            if (data.password !== "0000") {
                 this.formData.password = "";
                 this.errors.password = "Пароль указан некорректно";
             } else {

@@ -1,0 +1,14 @@
+@use "../variables";
+
+.input-check-form {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 1.9rem;
+  margin-left: 18.4rem;
+  margin-top: 3.1rem;
+  align-content: start;
+  justify-content: start;
+  &__btn {
+    grid-column: 2/ span 1;
+  }
+}
