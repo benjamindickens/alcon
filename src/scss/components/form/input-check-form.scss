@@ -11,4 +11,12 @@
   &__btn {
     grid-column: 2/ span 1;
   }
+
+  &__input-container {
+    &._error {
+      & .error-message {
+        bottom: -1.3rem;
+      }
+    }
+  }
 }

@@ -1,7 +1,7 @@
 @use "../variables";
 
 .popup {
-  display: none;
+  display: grid;
   opacity: 1;
   z-index: 20;
   position: fixed;
@@ -14,7 +14,16 @@
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
 
+  &__close {
+    width: 2.8rem;
+    height: 2.8rem;
+    top: 2.1rem;
+    right: 2.1rem;
+    position: absolute;
+  }
+
   &__container {
+    align-content: start;
     position: relative;
     margin-top: 6rem;
     height: 53.4rem;

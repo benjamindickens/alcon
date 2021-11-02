@@ -16,6 +16,7 @@ const app = new Vue({
             registerNewUser: false,
             registeredUser: false,
             currentPopupTitle: "Введите данные чека",
+            checkRegistered: false,
             formData: {
                 phone: "",
                 phoneCode: "",
@@ -24,6 +25,8 @@ const app = new Vue({
                 rePassword: "",
                 agreement: "",
                 name: "",
+            },
+            checkData: {
                 sum: "",
                 date: "",
                 time: "",
@@ -63,12 +66,26 @@ const app = new Vue({
             }
         }
     }, watch: {
+        'checkData.date'(val) {
+            this.maskedValidation(val, "date", "_")
+        },
+        'checkData.time'(val) {
+            this.maskedValidation(val, "time", "_")
+        },
         'formData.phone'(val) {
-            if (![...val].includes("_")) {
-                this.validation.phone = true;
-            } else if (this.validation.phone) {
-                this.validation.phone = false;
-            }
+            this.maskedValidation(val, "phone", "_")
+        },
+        'checkData.sum'(val) {
+            this.checkIsEmpty(val, "sum")
+        },
+        'checkData.fn'(val) {
+            this.checkIsEmpty(val, "fn")
+        },
+        'checkData.fd'(val) {
+            this.checkIsEmpty(val, "fd")
+        },
+        'checkData.fdp'(val) {
+            this.checkIsEmpty(val, "fdp")
         },
         'formData.email'(val) {
             const isValid = this.validateEmail(val);
@@ -116,6 +133,21 @@ const app = new Vue({
         }
     },
     methods: {
+        resetFields(...currentData) {
+            currentData.forEach(name => {
+                for (const [field] of Object.entries(this[name])) {
+                    this[name][field] = "";
+                }
+            })
+            console.log(this.checkData)
+        },
+        maskedValidation(val, field, symbol) {
+            if (![...val].includes(symbol) && val.length > 0) {
+                this.validation[field] = true;
+            } else if (this.validation[field]) {
+                this.validation[field] = false;
+            }
+        },
         checkIsEmpty(val, field) {
             if (val) {
                 this.validation[field] = true;
@@ -123,8 +155,28 @@ const app = new Vue({
                 this.validation[field] = false;
             }
         },
-        uploadData(){
-            console.log("beb")
+        uploadData() {
+            let validData = true;
+            if (!this.validateSum(this.checkData.sum)) {
+                let validData = false;
+                this.errors.sum = "Введите сумму с копейками";
+            }
+            for (const [field, value] of Object.entries(this.checkData)) {
+                if (value === "") {
+                    validData = false;
+                    this.errors[field] = "Поле обязательно для заполнения"
+                }
+            }
+            if (validData) {
+                //    send data to register
+                console.log("data sent")
+                const data = this.checkData;
+                this.checkRegistered = true;
+            }
+
+        },
+        closePopup() {
+            this.resetFields("formData", "checkData", "errors")
         },
         registration() {
             let validData = true;
@@ -147,6 +199,12 @@ const app = new Vue({
                 console.log("registered")
                 this.registeredUser = true;
             }
+        },
+        validateSum(value) {
+            if (/[0-9]*\.[0-9]{2}/.test(value)) {
+                return (true)
+            }
+            return (false)
         },
         validateEmail(mail) {
             if (/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(mail)) {
