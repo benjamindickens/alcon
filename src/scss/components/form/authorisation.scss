@@ -3,4 +3,23 @@
 .authorisation {
   margin-top: 7rem;
 
+
+  &__title {
+    position: relative;
+    width: fit-content;
+
+    &._active-user {
+      &:after {
+        height: 1.8rem;
+        width: 2.4rem;
+        content: " ";
+        right: -4rem;
+        position: absolute;
+        background: url("../images/desktop/block-3/checkbox-no-circle.svg") no-repeat center;
+        background-size: cover;
+      }
+
+    }
+  }
+
 }

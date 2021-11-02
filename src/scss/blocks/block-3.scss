@@ -9,6 +9,12 @@
   font-size: 1.8rem;
   line-height: 2.4rem;
 
+  &._active-user {
+    height: 89.1rem;
+    background: url("../images/desktop/block-3/background-activeUser.png") no-repeat center;
+    background-size: cover;
+  }
+
   @media (max-width: variables.$tablet) {
 
   }

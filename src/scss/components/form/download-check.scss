@@ -2,6 +2,10 @@
 .download-check {
   margin-top: 4rem;
 
+  &._active-user {
+    margin-top: 9.5rem;
+  }
+
   &._extra-margin {
     margin-top: 7rem;
   }
@@ -15,5 +19,29 @@
     grid-auto-flow: column;
     grid-gap: 1.5rem;
     margin-top: 3.1rem;
+  }
+
+  &__tooltip {
+    display: none;
+
+    & div {
+      margin-top: 2rem;
+    }
+
+    & ol {
+      margin-top: 1.4rem;
+      margin-left: 2rem;
+    }
+  }
+}
+
+.download-check._active-user {
+ & .download-check__btn {
+   color: variables.$main-white;
+   background: variables.$main-blue;
+ }
+
+  & .download-check__tooltip {
+    display: block;
   }
 }
