@@ -336,7 +336,7 @@
                                 <button @click="initUploadCheck('handmade')" class="download-check__btn _form-btn _scan">
                                     Сканировать QR-код
                                 </button>
-                                <button @click="uploadAndScan" class="download-check__btn _form-btn _upload">
+                                <button class="download-check__btn _form-btn _upload">
                                     Загрузить
                                     чек
                                 </button>
@@ -344,7 +344,7 @@
                                     Отправить
                                     данные чека
                                 </button>
-                                <qrcode-capture class="_hidden-input _form-btn" ref="checkUpload" @decode="onDecode" />
+                                <qrcode-capture class="download-check__btn _hidden-input _form-btn" ref="checkUpload" @decode="onDecode" />
                             </div>
                             <div class="download-check__tooltip">
                                 <div>Обратите внимание:</div>

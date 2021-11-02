@@ -120,17 +120,31 @@ const app = new Vue({
             async phoneCode(val) {
                 if (![...val].some(isNaN)) {
                     //проверяем на серве верный ли пинкод
-                    // const res = await this.submitForm("http://localhost/checkcode", {
-                    //     phoneCode: val,
-                    //     phone: this.formData.phone
-                    // });
-                    //удалить потом феиковый рес ниже
+                    // try {
+                    //     const res = await this.submitForm("http://localhost/checkcode", {
+                    //         phoneCode: val,
+                    //         phone: this.formData.phone
+                    //     });
+                    //
+                    //     if (res.data.user) {
+                    //         this.currentUser = res.data.user;
+                    //     } else {
+                    //         // если нет начинаеться регистрация
+                    //         this.registerNewUser = true;
+                    //     }
+                    // } catch(e){
+                    //     console.error(e)
+                    //     this.phoneCode = '';
+                    //     this.errors.phoneCode = "Неправильно введен код";
+                    // }
+
+
+                    //удалить потом феиковый рес ниже все логика в трай кач переидет
                     const res = {
                         data: {
                             success: true,
                         }
                     }
-
                     //если код не совпад с требуемым сбрасываеться и ошибка
                     if (!res.data.success) {
                         this.phoneCode = '';
@@ -143,8 +157,8 @@ const app = new Vue({
                             // если нет начинаеться регистрация
                             this.registerNewUser = true;
                         }
-
                     }
+
                     document.activeElement.blur();
                 }
             }
@@ -157,10 +171,6 @@ const app = new Vue({
         methods: {
             onDecode(qr) {
                 this.qr = qr
-            },
-            uploadAndScan() {
-                console.log(this.$refs.checkUpload);
-                this.$refs.checkUpload.click()
             },
             initUploadCheck(method) {
                 this.currentPopup.name = method;
@@ -250,10 +260,14 @@ const app = new Vue({
                 }
 
                 if (validData) {
-                    //регистрация юзера
-                    // const res = await this.submitForm("http://localhost/userRegistration", this.formData);
-                    //запись созданого юзера как текущего
-                    // this.currentUser = res.data.user;
+                    try {
+                        //регистрация юзера
+                        // const res = await this.submitForm("http://localhost/userRegistration", this.formData);
+                        //запись созданого юзера как текущего
+                        // this.currentUser = res.data.user;
+                    } catch (e) {
+                        console.error(e)
+                    }
 
                     //    феик дата
                     this.currentUser = "Ben"

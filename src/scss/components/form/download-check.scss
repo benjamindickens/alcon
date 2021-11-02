@@ -26,6 +26,15 @@
     &._handmade {
       grid-area: handmade;
     }
+    &._upload {
+      grid-area: upload;
+    }
+    &._scan {
+      grid-area: scan;
+    }
+    &._hidden-input {
+      grid-area: upload;
+    }
   }
 
   &__tooltip {

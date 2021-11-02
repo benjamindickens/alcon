@@ -349,6 +349,11 @@ a, a:active, a:hover {
   }
 }
 
+._hidden-input {
+  opacity: 0;
+  cursor: pointer;
+}
+
 ._main-input-container._error {
   & input {
     border: .2rem solid variables.$main-red;
