@@ -19,6 +19,13 @@
     grid-auto-flow: column;
     grid-gap: 1.5rem;
     margin-top: 3.1rem;
+    grid-template-areas: "scan upload handmade";
+  }
+
+  &__btn {
+    &._handmade {
+      grid-area: handmade;
+    }
   }
 
   &__tooltip {

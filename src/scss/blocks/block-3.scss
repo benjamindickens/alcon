@@ -15,6 +15,12 @@
     background-size: cover;
   }
 
+ &._final-screen {
+   background: url("../images/desktop/block-3/final-background.png") no-repeat center;
+   background-size: cover;
+   height: 100.4rem;
+ }
+
   @media (max-width: variables.$tablet) {
 
   }

@@ -13,7 +13,8 @@
   },
   "dependencies": {
     "vue": "^2.6.12",
-    "vue-masked-input": "^0.5.2"
+    "vue-masked-input": "^0.5.2",
+    "vue-qrcode-reader": "^3.0.6"
   },
   "alias": {
     "vue": "./node_modules/vue/dist/vue.common.js"

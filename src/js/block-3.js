@@ -1,28 +1,30 @@
 import Vue from 'vue'
 import MaskedInput from 'vue-masked-input'
+import {QrcodeCapture} from 'vue-qrcode-reader'
 
 const app = new Vue({
         el: '#app',
         components: {
-            MaskedInput
+            MaskedInput, QrcodeCapture
         },
         data() {
             return {
-                currentUser: null,
+                qr: "",
+                currentUser: "pig",
                 authMethod: "phone",
                 gettingPhoneCode: false,
                 countDown: 0,
                 popupOpened: false,
                 registerNewUser: false,
                 currentPopup: {},
+                successOperation: false,
                 popupsInfo: {
                     handmade: "Введите данные чека"
                 },
                 currentPopupTitle: false,
-                checkRegistered: false,
+                phoneCode: "",
                 formData: {
                     phone: "",
-                    phoneCode: "",
                     email: "",
                     password: "",
                     rePassword: "",
@@ -79,7 +81,12 @@ const app = new Vue({
                 this.maskedValidation(val, "phone", "_")
             },
             'checkData.sum'(val) {
-                this.checkIsEmpty(val, "sum")
+                const isValid = this.validateSum(this.checkData.sum);
+                if (isValid) {
+                    this.validation.sum = true;
+                } else {
+                    this.validation.sum = false;
+                }
             },
             'checkData.fn'(val) {
                 this.checkIsEmpty(val, "fn")
@@ -110,21 +117,30 @@ const app = new Vue({
             'formData.agreement'(val) {
                 this.checkIsEmpty(val, "agreement")
             },
-            'formData.phoneCode'(val) {
+            async phoneCode(val) {
                 if (![...val].some(isNaN)) {
-                    //reuest to check pincode
-                    const rightPin = "0000";
-                    let alreadyExist = false;
-                    if (val !== rightPin) {
-                        this.formData.phoneCode = '';
+                    //проверяем на серве верный ли пинкод
+                    // const res = await this.submitForm("http://localhost/checkcode", {
+                    //     phoneCode: val,
+                    //     phone: this.formData.phone
+                    // });
+                    //удалить потом феиковый рес ниже
+                    const res = {
+                        data: {
+                            success: true,
+                        }
+                    }
+
+                    //если код не совпад с требуемым сбрасываеться и ошибка
+                    if (!res.data.success) {
+                        this.phoneCode = '';
                         this.errors.phoneCode = "Неправильно введен код";
                     } else {
-                        // alreadyExist = "userData";
-
-                        if (alreadyExist) {
-                            this.currentUser = alreadyExist;
-
+                        //если юзер есть в базе он сразу авторизиуется,
+                        if (res.data.user) {
+                            this.currentUser = res.data.user;
                         } else {
+                            // если нет начинаеться регистрация
                             this.registerNewUser = true;
                         }
 
@@ -139,6 +155,13 @@ const app = new Vue({
             }
         },
         methods: {
+            onDecode(qr) {
+                this.qr = qr
+            },
+            uploadAndScan() {
+                console.log(this.$refs.checkUpload);
+                this.$refs.checkUpload.click()
+            },
             initUploadCheck(method) {
                 this.currentPopup.name = method;
                 this.currentPopup.title = this.popupsInfo[method];
@@ -165,19 +188,19 @@ const app = new Vue({
                     this.validation[field] = false;
                 }
             },
-            uploadData() {
+            async uploadData() {
                 let validData = true;
-                if (!this.validateSum(this.checkData.sum)) {
+                if (!this.validation.sum) {
                     validData = false;
                     this.errors.sum = "Введите сумму с копейками";
                 }
 
-                if(!this.validation.date) {
+                if (!this.validation.date) {
                     validData = false;
                     this.errors.date = "Введите дату в формате ДД. ММ. ГГГГ";
                 }
 
-                if(!this.validation.time){
+                if (!this.validation.time) {
                     validData = false;
                     this.errors.time = "Введите время в формате ЧЧ:ММ";
                 }
@@ -189,11 +212,15 @@ const app = new Vue({
                     }
                 }
                 if (validData) {
-                    //    send data to register
-                    console.log("data sent")
-                    const data = this.checkData;
-                    this.checkRegistered = true;
-                    this.popupOpened = false;
+                    try {
+                        const res = await this.submitForm("http://localhost/uploadCheck", this.checkData);
+                        this.popupOpened = false;
+                        this.successOperation = true;
+
+                    } catch (e) {
+                        //обработка ошибок
+                        console.error(e)
+                    }
                 }
 
             },
@@ -201,7 +228,8 @@ const app = new Vue({
                 this.popupOpened = false;
                 this.resetFields("formData", "checkData", "errors");
             },
-            registration() {
+            async registration() {
+
                 let validData = true;
                 if (!this.validation.email) {
                     validData = false;
@@ -222,10 +250,13 @@ const app = new Vue({
                 }
 
                 if (validData) {
-                    const data = this.formData;
-                    //    send data to register
-                    const response = {name: data.name}
-                    this.currentUser = response;
+                    //регистрация юзера
+                    // const res = await this.submitForm("http://localhost/userRegistration", this.formData);
+                    //запись созданого юзера как текущего
+                    // this.currentUser = res.data.user;
+
+                    //    феик дата
+                    this.currentUser = "Ben"
                 }
             },
             validateSum(value) {
@@ -241,33 +272,46 @@ const app = new Vue({
                 return (false)
             },
             switchAuthMethod() {
+                this.resetFields("formData")
                 this.authMethod = this.authMethod === "phone" ? "email" : "phone";
             },
-            authWithEmail() {
+            async authWithEmail() {
                 const data = {
                     email: this.formData.email,
                     password: this.formData.password
                 }
                 if (this.validation.email) {
-                    //    get data address of email end password
-
-                    if (data.password !== "0000") {
+                    //авторицацияю юзера через меил
+                    try {
+                        const res = await this.submitForm("http://localhost/login", data);
+                        this.currentUser = res.data.user;
+                    } catch (e) {
                         this.formData.password = "";
                         this.errors.password = "Пароль указан некорректно";
-                    } else {
-                        this.currentUser = {name: "from bd"}
                     }
+
                 } else {
                     this.errors.email = "введите корректный E-mail"
                 }
             },
-            sendCodeToPhone() {
+            async submitForm(url, data) {
+                const res = await fetch(url, {
+                    method: 'POST',
+                    mode: 'cors',
+                    cache: 'no-cache',
+                    credentials: 'same-origin',
+                    referrerPolicy: 'no-referrer',
+                    body: JSON.stringify(data),
+                });
+                return res;
+            },
+            async sendCodeToPhone() {
                 if (this.validation.phone) {
                     if (!this.countDown) {
+                        //запрос на получение смс кода
+                        // await this.submitForm("http://localhost/getcode", {phone: this.formData.phone});
                         this.gettingPhoneCode = true;
                         this.setCountDown(59)
-                        const data = this.formData.phone
-                        //    fetch request to send sms
                     }
                 } else {
                     this.errors.phone = "Неправильно введен номер";
@@ -290,6 +334,10 @@ const app = new Vue({
             this.$nextTick(() => {
                 this.$refs["popup"].classList.add("_init")
             })
+        },
+        created() {
+            //    request to get data if you loged in
+            //     this.currentUser = res;
         }
     })
 ;
