@@ -9,7 +9,6 @@ const app = new Vue({
         },
         data() {
             return {
-                currentQr: "",
                 uploadedQr: "",
                 currentUser: "pig",
                 authMethod: "phone",
@@ -20,7 +19,9 @@ const app = new Vue({
                 currentPopup: {},
                 successOperation: false,
                 popupsInfo: {
-                    handmade: "Введите данные чека"
+                    handmade: "Введите данные чека",
+                    error: "Обратите внимание!",
+                    manualCheck: "Чек загружен",
                 },
                 error: null,
                 currentPopupTitle: false,
@@ -122,9 +123,6 @@ const app = new Vue({
             'formData.agreement'(val) {
                 this.checkIsEmpty(val, "agreement")
             },
-            '$refs.checkUpload.$el.files'(val) {
-                console.log(val, "imgs updated")
-            },
             async phoneCode(val) {
                 if (![...val].some(isNaN)) {
                     //проверяем на серве верный ли пинкод
@@ -177,22 +175,35 @@ const app = new Vue({
             }
         },
         methods: {
-            onDecode(qr) {
-                this.uploadedQr = qr;
-                console.log(qr)
-                if (!this.uploadedQr) {
-                    this.initUploadCheck("error")
+            async sendToCheck() {
+
+                const img = this.$refs.checkUpload.$el.files[0];
+                try {
+                    //отправка фотки чека на ручную проверку
+                    // const res = await this.submitForm("http://localhost/sendImg", img);
+                    this.initUploadCheck("manualCheck")
+                } catch (e) {
+                    console.error(e)
                 }
             },
             async onDetect(promise) {
                 try {
-                    const {
-                        content,
-                        location
-                    } = await promise
-                    console.log(content, location)
-                } catch (error) {
-                    console.log("gavno")
+                    const {content} = await promise;
+                    this.uploadedQr = content;
+                    if (!this.uploadedQr) {
+                        this.initUploadCheck("error")
+                    } else {
+                        try {
+                            //отправка кьюар кода
+                            // const res = await this.submitForm("http://localhost/sendQr", this.uploadedQr);
+                            this.successOperation = true;
+                        } catch (e) {
+                            console.error(e)
+                        }
+
+                    }
+                } catch (e) {
+                    console.error(e)
                 }
             },
             initUploadCheck(method) {

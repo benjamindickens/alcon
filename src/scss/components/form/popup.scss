@@ -24,6 +24,8 @@
     top: 2.1rem;
     right: 2.1rem;
     position: absolute;
+    background: url("../images/desktop/block-3/close-btn.svg") no-repeat center;
+    background-size: cover;
   }
 
   &__container {
@@ -46,6 +48,18 @@
       display: block;
       background: url("../images/desktop/block-3/popup-check.png") no-repeat center;
       background-size: cover;
+    }
+  }
+
+  &__container._error {
+    width: 85rem;
+
+    & .popup__title {
+      margin-top: 3.2rem;
+      margin-left: 4rem;
+    }
+    &:after {
+      display: none;
     }
   }
 

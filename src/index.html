@@ -108,7 +108,7 @@
         <div id="app">
             <div class="block block-3" :class="{'_active-user':currentUser, '_final-screen': successOperation}">
                 <div v-show="popupOpened" ref="popup" class="popup-overlay popup">
-                    <div class="popup__container">
+                    <div class="popup__container" :class="`_${currentPopup.name}`">
                         <div class="popup__close" @click="closePopup"></div>
                         <h2 class="popup__title">{{ currentPopup.title }}</h2>
                         <div v-if="currentPopup.name === 'handmade'" class="popup__input-check-form input-check-form">
@@ -174,8 +174,30 @@
                                     @click="uploadData">ЗАГРУЗИТЬ ДАННЫЕ
                             </button>
                         </div>
-                        <div v-if="currentPopup.name === 'error'" class="popup__bad-qr">
-                            <h1>xre</h1>
+                        <div v-if="currentPopup.name === 'error'" class="popup__error-qr error-qr">
+                            <div class="error-qr__attention">Не удалось распознать чек</div>
+                            <ol class="error-qr__rules">
+                                <li>На фотографии чека должен четко считываться QR-код.</li>
+                                <li>Файл должен быть в формате JPEG или PNG, размером не более 20мБ</li>
+                            </ol>
+
+                            <div class="error-qr__btns-container">
+                                <button @click="successOperation = false" class="error-qr__btn _form-btn">
+                                    Сканировать QR-код
+                                </button>
+                                <button @click="popupOpened = false" class="error-qr__btn _form-btn">
+                                    ЗАГРУЗИТЬ ДРУГОЙ ЧЕК
+                                </button>
+                                <button @click="initUploadCheck('handmade')" class="error-qr__btn _form-btn">
+                                    Отправить данные чека
+                                </button>
+                                <button @click="sendToCheck" class="error-qr__btn _form-btn">
+                                    Отправить на ручную проверку
+                                </button>
+                            </div>
+                        </div>
+                        <div v-if="currentPopup.name === 'manualCheck'" class="popup__manual-check manual-check">
+<h1>xyi</h1>
                         </div>
 
                     </div>
