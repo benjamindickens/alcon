@@ -8,6 +8,13 @@
   grid-gap: 1.9rem;
   position: relative;
 
+  &__input-container {
+
+    & .error-message {
+      bottom: -1.5rem;
+    }
+  }
+
   &__agreement {
     position: absolute;
     bottom: 0;
@@ -17,6 +24,13 @@
       max-width: 37rem;
       font-size: 1.3rem;
       line-height: 1.7rem;
+    }
+  }
+
+  &__agreement._error {
+    color: variables.$main-red;
+    .new-user-form__checkbox + label::before {
+      border-color: variables.$main-red;
     }
   }
 

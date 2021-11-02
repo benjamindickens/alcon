@@ -1,4 +1,5 @@
 @use "variables";
+
 .phone-form {
   display: grid;
   justify-content: start;
@@ -11,10 +12,8 @@
         border: .2rem solid variables.$main-red;
       }
 
-      &:after {
+      & .error-message {
         bottom: -1.6rem;
-        opacity: 1;
-        content: "Неправильно введен телефон"
       }
     }
   }

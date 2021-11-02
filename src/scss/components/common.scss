@@ -310,7 +310,6 @@ a, a:active, a:hover {
 
 ._disabled {
   opacity: .3;
-  pointer-events: none;
 }
 
 ._bold {
@@ -339,22 +338,21 @@ a, a:active, a:hover {
   }
 }
 
-
-._error {
-  height: 100%;
+.error-message {
+  transition: opacity .3s;
+  opacity: 0;
   width: 100%;
-
-  &:after {
-    transition: opacity .3s;
-    opacity: 0;
-    width: 100%;
-    text-align: center;
-    bottom: -1.8rem;
-    position: absolute;
-    display: block;
-    color: variables.$main-red;
-    font-size: .9rem;
-    line-height: 1.2rem;
+  text-align: center;
+  bottom: -1.8rem;
+  position: absolute;
+  display: block;
+  color: variables.$main-red;
+  font-size: .9rem;
+  line-height: 1.2rem;
+}
+._error {
+  & .error-message {
+    opacity: 1;
   }
 }
 

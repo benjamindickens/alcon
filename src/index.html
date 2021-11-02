@@ -120,58 +120,58 @@
 
                     <div class="authorisation__title">Авторизуйтесь или зарегистрируйтесь</div>
 
-                    <div v-if="authNewUser" class="new-user-form">
-                        <div @focusin="errors.password = ''"
-                             :class="{'_ok': validation.password,'_error': errors.password}"
-                             class="new-user-form__input-container _main-input-container _password">
-                            <input class="new-user-form__input _main-input"
-                                   type="text"
-                                   v-model="formData.password"
-                                   placeholder="Введите пароль">
+                    <div v-if="registerNewUser" class="new-user-form">
+
+                        <div @focusin="errors.phone = ''"
+                             :class="{'_ok': validation.phone,'_error': errors.phone}"
+                             class="new-user-form__input-container _main-input-container">
+                            <div class="error-message">{{ errors.phone }}</div>
+                            <masked-input class="new-user-form__input _email _main-input"
+                                          v-model="formData.phone"
+                                          mask="\+\7 (111) 111-11-11" placeholder="+7 (___) ___-__-__"/>
                         </div>
 
                         <div @focusin="errors.password = ''"
                              :class="{'_ok': validation.password,'_error': errors.password}"
                              class="new-user-form__input-container _main-input-container _password">
+                            <div class="error-message">{{ errors.password }}</div>
                             <input class="new-user-form__input _main-input"
-                                   type="text"
+                                   type="password"
                                    v-model="formData.password"
                                    placeholder="Введите пароль">
                         </div>
 
-                        <div @focusin="errors.password = ''"
-                             :class="{'_ok': validation.password,'_error': errors.password}"
+                        <div @focusin="errors.name = ''"
+                             :class="{'_ok': validation.name,'_error': errors.name}"
                              class="new-user-form__input-container _main-input-container _password">
+                            <div class="error-message">{{ errors.name }}</div>
                             <input class="new-user-form__input _main-input"
                                    type="text"
-                                   v-model="formData.password"
-                                   placeholder="Введите пароль">
+                                   v-model="formData.name"
+                                   placeholder="Ваше имя">
                         </div>
 
-                        <div @focusin="errors.password = ''"
-                             :class="{'_ok': validation.password,'_error': errors.password}"
+                        <div @focusin="errors.rePassword = ''"
+                             :class="{'_ok': validation.rePassword,'_error': errors.rePassword}"
                              class="new-user-form__input-container _main-input-container _password">
+                            <div class="error-message">{{ errors.rePassword }}</div>
                             <input class="new-user-form__input _main-input"
-                                   type="text"
-                                   v-model="formData.password"
-                                   placeholder="Введите пароль">
+                                   type="password"
+                                   v-model="formData.rePassword"
+                                   placeholder="Подтвердите пароль">
                         </div>
 
-                        <div @focusin="errors.password = ''"
-                             :class="{'_ok': validation.password,'_error': errors.password}"
-                             class="new-user-form__input-container _main-input-container _password">
+                        <div @focusin="errors.email = ''"
+                             :class="{'_ok': validation.email,'_error': errors.email}"
+                             class="new-user-form__input-container _main-input-container _email">
+                            <div class="error-message">{{ errors.email }}</div>
                             <input class="new-user-form__input _main-input"
-                                   type="text"
-                                   v-model="formData.password"
-                                   placeholder="Введите пароль">
+                                   v-model="formData.email"
+                                   type="email"
+                                   placeholder="Введите e-mail">
                         </div>
 
-                        <button class="new-user-form__btn _form-btn"
-                                :class="{'_disabled': !validation.email || !validation.password}"
-                                @click="authWithEmail">Зарегистрироваться
-                        </button>
-
-                        <div class="new-user-form__agreement">
+                        <div @focusin="errors.agreement = ''" class="new-user-form__agreement":class="{'_error': errors.agreement}">
                             <input class="new-user-form__checkbox" type="checkbox" id="agreement"
                                    v-model="formData.agreement">
                             <label class="new-user-form__agreement-label" for="agreement">
@@ -183,11 +183,18 @@
 
                             </label>
                         </div>
+
+                        <button class="new-user-form__btn _form-btn"
+                                :class="{'_disabled': !validation.email || !validation.password ||!validation.rePassword ||!validation.name || !validation.phone || !validation.agreement}"
+                                @click="registration">Зарегистрироваться
+                        </button>
+
                     </div>
 
                     <div v-else-if="gettingPhoneCode" @focusin="errors.phoneCode = ''"
                          :class="{'_error': errors.phoneCode }"
                          class="code-form">
+                        <div class="error-message">{{ errors.phoneCode }}</div>
                         <div class="code-form__phone-code-box"></div>
                         <div class="code-form__phone-code-box"></div>
                         <div class="code-form__phone-code-box"></div>
@@ -204,6 +211,7 @@
                         <div @focusin="errors.phone = ''"
                              :class="{'_ok': validation.phone,'_error': errors.phone}"
                              class="phone-form__input-container _main-input-container _phone">
+                            <div class="error-message">{{ errors.phone }}</div>
                             <masked-input class="phone-form__input _email _main-input"
                                           v-model="formData.phone"
                                           mask="\+\7 (111) 111-11-11" placeholder="+7 (___) ___-__-__"/>
@@ -216,8 +224,9 @@
                     </div>
                     <div v-else-if="authMethod === 'email'" class="email-form">
                         <div @focusin="errors.email = ''"
-                             :class="{'_ok': validation.email,'_error': errors.phone}"
+                             :class="{'_ok': validation.email,'_error': errors.email}"
                              class="email-form__input-container _main-input-container _email">
+                            <div class="error-message">{{ errors.email }}</div>
                             <input class="email-form__input _main-input"
                                    v-model="formData.email"
                                    type="email"
@@ -227,6 +236,7 @@
                         <div @focusin="errors.password = ''"
                              :class="{'_ok': validation.password,'_error': errors.password}"
                              class="email-form__input-container _main-input-container _password">
+                            <div class="error-message">{{ errors.password }}</div>
                             <input class="email-form__input _main-input"
                                    type="password"
                                    v-model="formData.password"

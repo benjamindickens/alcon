@@ -16,11 +16,8 @@
       input {
         border: .2rem solid variables.$main-red;
       }
-
-      &:after {
+      & .error-message {
         bottom: -1.6rem;
-        opacity: 1;
-        content: "Пароль указан некорректно"
       }
     }
   }
