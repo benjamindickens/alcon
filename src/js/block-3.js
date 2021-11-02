@@ -184,7 +184,8 @@ const app = new Vue({
 
             },
             closePopup() {
-                this.resetFields("formData", "checkData", "errors")
+                this.popupOpened = false;
+                this.resetFields("formData", "checkData", "errors");
             },
             registration() {
                 let validData = true;
