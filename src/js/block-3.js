@@ -50,14 +50,17 @@ const app = new Vue({
         }
     },
     computed: {
-        convertedCountdown(){
-           return this.countDown.toString().length < 2 ? `0${this.countDown}` : this.countDown
+        convertedCountdown() {
+            return this.countDown.toString().length < 2 ? `0${this.countDown}` : this.countDown
         }
     },
     methods: {
+        switchAuthMethod() {
+            this.authMethod = this.authMethod === "phone" ? "email" : "phone";
+        },
         sendCodeToPhone() {
             if (this.validation.phone) {
-                if(!this.countDown){
+                if (!this.countDown) {
                     this.gettingPhoneCode = true;
                     this.setCountDown(59)
                     //    fetch request to send sms

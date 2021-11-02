@@ -1,0 +1,17 @@
+@use "variables";
+
+.email-form {
+  display: grid;
+  grid-template-areas:
+        "email password"
+        "btn btn"
+        "switch switch";
+  justify-content: start;
+  grid-gap: 1.9rem;
+
+  &__switcher {
+    grid-area: switch;
+    justify-self: start;
+    margin-left: 8.8rem;
+  }
+}

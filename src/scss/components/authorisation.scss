@@ -1,0 +1,40 @@
+@use "variables";
+
+.authorisation {
+  margin-top: 7rem;
+
+  &__phone-block {
+    display: grid;
+    justify-content: start;
+  }
+
+  &__phone-input-container {
+    display: grid;
+  }
+
+  &__input-container._phone {
+    margin-top: 4.2rem;
+    height: 6.2rem;
+
+
+    &._error {
+      input {
+        border: .2rem solid variables.$main-red;
+      }
+
+      &:after {
+        bottom: -1.6rem;
+        opacity: 1;
+        content: "Неправильно введен телефон"
+      }
+    }
+  }
+
+  &__btn {
+    margin-top: 2.1rem;
+  }
+
+  &__switcher {
+    margin-top: 2.53rem;
+  }
+}

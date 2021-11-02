@@ -4,6 +4,10 @@
 @use "components/common";
 @use "components/header";
 @use "components/footer";
+@use "components/authorisation";
+@use "components/code-form";
+@use "components/download-check";
+@use "components/email-form";
 @use "blocks/block-1";
 @use "blocks/block-2";
 @use "blocks/block-3";

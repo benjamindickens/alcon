@@ -1,0 +1,19 @@
+@use "variables";
+.download-check {
+  margin-top: 4rem;
+
+  &._extra-margin {
+    margin-top: 7rem;
+  }
+
+  &__title {
+  }
+
+  &__container {
+    justify-content: start;
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 1.5rem;
+    margin-top: 3.1rem;
+  }
+}

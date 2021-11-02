@@ -117,20 +117,22 @@
                 </div>
 
                 <div class="block-3__stage authorisation">
-                    <transition name="fade">
+
                         <div v-if="authMethod === 'phone'" class="authorisation__phone-block">
                             <div class="authorisation__title">Авторизуйтесь или зарегистрируйтесь</div>
-                            <transition name="fade">
                                 <div v-if="gettingPhoneCode" @focusin="errors.phoneCode = ''"
                                      :class="{'_error': errors.phoneCode }"
-                                     class="code__phone-code-container">
-                                    <div class="code__phone-code-box"></div>
-                                    <div class="code__phone-code-box"></div>
-                                    <div class="code__phone-code-box"></div>
-                                    <div class="code__phone-code-box"></div>
+                                     class="code-form">
+                                    <div class="code-form__phone-code-box"></div>
+                                    <div class="code-form__phone-code-box"></div>
+                                    <div class="code-form__phone-code-box"></div>
+                                    <div class="code-form__phone-code-box"></div>
                                     <input maxlength="4" v-model="formData.phoneCode"
-                                           class="code__phone-code-input" type="text">
-                                    <button class="code__switcher _underlined" @click="sendCodeToPhone">{{countDown ? `Получить новый можно через 00:${convertedCountdown}` : "Получить новый код"}}
+                                           class="code-form__phone-code-input" type="text">
+                                    <button class="code-form__switcher _underlined" @click="sendCodeToPhone">
+                                        {{
+                                            countDown ? `Получить новый можно через 00:${convertedCountdown}` : "Получить новый код"
+                                        }}
                                     </button>
                                 </div>
                                 <div v-else class="authorisation__phone-input-container">
@@ -143,13 +145,39 @@
                                     </div>
                                     <button class="authorisation__btn _form-btn" @click="sendCodeToPhone">получить код
                                     </button>
-                                    <button class="authorisation__switcher _underlined">Войти по логину и паролю
+                                    <button class="authorisation__switcher _underlined" @click="switchAuthMethod">Войти
+                                        по логину и паролю
                                     </button>
                                 </div>
-                            </transition>
                         </div>
-                    </transition>
+                        <div v-if="authMethod === 'email'" class="authorisation__email-block">
+                            <div class="email-form">
+                                <div @focusin="errors.email = ''"
+                                     :class="{'_ok': validation.email,'_error': errors.phone}"
+                                     class="email-form__input-container _main-input-container _email">
+                                    <input class="email-form__input _main-input"
+                                           v-model="formData.email"
+                                           placeholder="Введите e-mail">
+                                </div>
+
+                                <div @focusin="errors.password = ''"
+                                     :class="{'_error': errors.password}"
+                                     class="email-form__input-container _main-input-container _password">
+                                    <input class="email-form__input _main-input"
+                                           v-model="formData.password"
+                                           placeholder="Введите пароль">
+                                </div>
+
+                                <button class="email-form__btn _form-btn" @click="sendEmail">Войти
+                                </button>
+
+                                <button class="email-form__switcher _underlined" @click="switchAuthMethod">Войти
+                                    через СМС-код
+                                </button>
+                            </div>
+                        </div>
                 </div>
+
                 <div class="block-3__stage download-check"
                      :class="{'_disabled': stage !== 3}">
                     <div class="download-check__title">Загрузите чек о покупке**</div>
