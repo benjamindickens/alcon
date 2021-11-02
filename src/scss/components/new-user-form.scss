@@ -3,15 +3,16 @@
 .new-user-form {
   margin-top: 1.2rem;
   display: grid;
-  grid-template-columns: repeat(2,auto);
+  grid-template-columns: repeat(2, auto);
   justify-content: start;
   grid-gap: 1.9rem;
   position: relative;
 
   &__input-container {
-
-    & .error-message {
-      bottom: -1.5rem;
+    &._error {
+      & .error-message {
+        bottom: -1.5rem;
+      }
     }
   }
 
@@ -29,6 +30,7 @@
 
   &__agreement._error {
     color: variables.$main-red;
+
     .new-user-form__checkbox + label::before {
       border-color: variables.$main-red;
     }

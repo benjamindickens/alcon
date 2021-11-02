@@ -350,9 +350,16 @@ a, a:active, a:hover {
   font-size: .9rem;
   line-height: 1.2rem;
 }
+
 ._error {
   & .error-message {
     opacity: 1;
+  }
+}
+
+._main-input-container._error {
+  & input {
+    border: .2rem solid variables.$main-red;
   }
 }
 

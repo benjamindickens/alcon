@@ -11,7 +11,7 @@
   height: 6.3rem;
   margin: 9.1rem 0 8rem 2rem;
 
-  &__phone-code-container._error {
+  &._error {
     .code-form__phone-code-box {
       border: .2rem solid variables.$main-red;
     }

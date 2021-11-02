@@ -13,9 +13,6 @@
   &__input-container {
 
     &._error {
-      input {
-        border: .2rem solid variables.$main-red;
-      }
       & .error-message {
         bottom: -1.6rem;
       }
