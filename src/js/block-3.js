@@ -165,7 +165,7 @@ const app = new Vue({
             uploadData() {
                 let validData = true;
                 if (!this.validateSum(this.checkData.sum)) {
-                    let validData = false;
+                    validData = false;
                     this.errors.sum = "Введите сумму с копейками";
                 }
                 for (const [field, value] of Object.entries(this.checkData)) {
@@ -189,6 +189,10 @@ const app = new Vue({
             },
             registration() {
                 let validData = true;
+                if(!this.validation.email) {
+                    validData = false;
+                    this.errors.email = "введите корректный E-mail"
+                }
                 if (this.formData.password != this.formData.rePassword) {
                     validData = false;
                     this.formData.password = ""
@@ -230,12 +234,17 @@ const app = new Vue({
                     email: this.formData.email,
                     password: this.formData.password
                 }
-                //    get data address of email end password
-                if (data.password !== "0000") {
-                    this.formData.password = "";
-                    this.errors.password = "Пароль указан некорректно";
+                if (this.validation.email) {
+                    //    get data address of email end password
+
+                    if (data.password !== "0000") {
+                        this.formData.password = "";
+                        this.errors.password = "Пароль указан некорректно";
+                    } else {
+                        console.log("send")
+                    }
                 } else {
-                    console.log("send")
+                    this.errors.email = "введите корректный E-mail"
                 }
             },
             sendCodeToPhone() {

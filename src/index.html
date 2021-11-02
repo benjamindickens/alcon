@@ -109,79 +109,76 @@
     <section data-block-3>
         <div id="app">
             <div class="block block-3" :class="{'_active-user':currentUser}">
-                <transition name="fade">
-                    <div v-show="popupOpened" ref="popup" class="popup-overlay popup">
-                        <div class="popup__container">
-                            <div class="popup__close" @click="closePopup"></div>
-                            <h2 class="popup__title">{{ currentPopup.title }}</h2>
-                            <div v-if="currentPopup.name === 'handmade'" class="popup__input-check-form input-check-form">
+                <div v-show="popupOpened" ref="popup" class="popup-overlay popup">
+                    <div class="popup__container">
+                        <div class="popup__close" @click="closePopup"></div>
+                        <h2 class="popup__title">{{ currentPopup.title }}</h2>
+                        <div v-if="currentPopup.name === 'handmade'" class="popup__input-check-form input-check-form">
 
-                                <div @focusin="errors.sum = ''"
-                                     :class="{'_ok': validation.sum,'_error': errors.sum}"
-                                     class="input-check-form__input-container _main-input-container">
-                                    <div class="error-message">{{ errors.sum }}</div>
-                                    <input class="input-check-form__input _email _main-input"
-                                           v-model="checkData.sum"
-                                           placeholder="Сумма"/>
-                                </div>
-
-                                <div @focusin="errors.fn = ''"
-                                     :class="{'_ok': validation.fn,'_error': errors.fn}"
-                                     class="input-check-form__input-container _main-input-container">
-                                    <div class="error-message">{{ errors.fn }}</div>
-                                    <input class="input-check-form__input _email _main-input"
-                                           v-model="checkData.fn"
-                                           placeholder="ФН"/>
-                                </div>
-
-                                <div @focusin="errors.date = ''"
-                                     :class="{'_ok': validation.date,'_error': errors.date}"
-                                     class="input-check-form__input-container _main-input-container">
-                                    <div class="error-message">{{ errors.date }}</div>
-                                    <masked-input class="input-check-form__input _email _main-input"
-                                                  v-model="checkData.date"
-                                                  mask="11.11.1111"
-                                                  placeholder="Дата"/>
-                                </div>
-
-                                <div @focusin="errors.fd = ''"
-                                     :class="{'_ok': validation.fd,'_error': errors.fd}"
-                                     class="input-check-form__input-container _main-input-container">
-                                    <div class="error-message">{{ errors.fd }}</div>
-                                    <input class="input-check-form__input _email _main-input"
-                                           v-model="checkData.fd"
-                                           placeholder="ФД"/>
-                                </div>
-
-                                <div @focusin="errors.time = ''"
-                                     :class="{'_ok': validation.time,'_error': errors.time}"
-                                     class="input-check-form__input-container _main-input-container">
-                                    <div class="error-message">{{ errors.time }}</div>
-                                    <masked-input class="input-check-form__input _email _main-input"
-                                                  v-model="checkData.time"
-                                                  mask="11:11"
-                                                  placeholder="Время"/>
-                                </div>
-
-                                <div @focusin="errors.fdp = ''"
-                                     :class="{'_ok': validation.fdp,'_error': errors.fdp}"
-                                     class="input-check-form__input-container _main-input-container">
-                                    <div class="error-message">{{ errors.fdp }}</div>
-                                    <input class="input-check-form__input _email _main-input"
-                                           v-model="checkData.fdp"
-                                           placeholder="ФДП или ФП"/>
-                                </div>
-
-
-                                <button class="input-check-form__btn _form-btn"
-                                        :class="{'_disabled': !validation.sum || !validation.date ||!validation.time ||!validation.fn || !validation.fd || !validation.fdp}"
-                                        @click="uploadData">ЗАГРУЗИТЬ ДАННЫЕ
-                                </button>
+                            <div @focusin="errors.sum = ''"
+                                 :class="{'_ok': validation.sum,'_error': errors.sum}"
+                                 class="input-check-form__input-container _main-input-container">
+                                <div class="error-message">{{ errors.sum }}</div>
+                                <input class="input-check-form__input _email _main-input"
+                                       v-model="checkData.sum"
+                                       placeholder="Сумма"/>
                             </div>
 
+                            <div @focusin="errors.fn = ''"
+                                 :class="{'_ok': validation.fn,'_error': errors.fn}"
+                                 class="input-check-form__input-container _main-input-container">
+                                <div class="error-message">{{ errors.fn }}</div>
+                                <input class="input-check-form__input _email _main-input"
+                                       v-model="checkData.fn"
+                                       placeholder="ФН"/>
+                            </div>
+
+                            <div @focusin="errors.date = ''"
+                                 :class="{'_ok': validation.date,'_error': errors.date}"
+                                 class="input-check-form__input-container _main-input-container">
+                                <div class="error-message">{{ errors.date }}</div>
+                                <masked-input class="input-check-form__input _email _main-input"
+                                              v-model="checkData.date"
+                                              mask="11.11.1111"
+                                              placeholder="Дата"/>
+                            </div>
+
+                            <div @focusin="errors.fd = ''"
+                                 :class="{'_ok': validation.fd,'_error': errors.fd}"
+                                 class="input-check-form__input-container _main-input-container">
+                                <div class="error-message">{{ errors.fd }}</div>
+                                <input class="input-check-form__input _email _main-input"
+                                       v-model="checkData.fd"
+                                       placeholder="ФД"/>
+                            </div>
+
+                            <div @focusin="errors.time = ''"
+                                 :class="{'_ok': validation.time,'_error': errors.time}"
+                                 class="input-check-form__input-container _main-input-container">
+                                <div class="error-message">{{ errors.time }}</div>
+                                <masked-input class="input-check-form__input _email _main-input"
+                                              v-model="checkData.time"
+                                              mask="11:11"
+                                              placeholder="Время"/>
+                            </div>
+
+                            <div @focusin="errors.fdp = ''"
+                                 :class="{'_ok': validation.fdp,'_error': errors.fdp}"
+                                 class="input-check-form__input-container _main-input-container">
+                                <div class="error-message">{{ errors.fdp }}</div>
+                                <input class="input-check-form__input _email _main-input"
+                                       v-model="checkData.fdp"
+                                       placeholder="ФДП или ФП"/>
+                            </div>
+
+                            <button class="input-check-form__btn _form-btn"
+                                    :class="{'_disabled': !validation.sum || !validation.date ||!validation.time ||!validation.fn || !validation.fd || !validation.fdp}"
+                                    @click="uploadData">ЗАГРУЗИТЬ ДАННЫЕ
+                            </button>
                         </div>
+
                     </div>
-                </transition>
+                </div>
                 <h1 class="block-3__title _section-title _main-title _white">
                     Участвовать в розыгрыше
                 </h1>
@@ -271,6 +268,11 @@
                         <div v-else-if="gettingPhoneCode && !currentUser" @focusin="errors.phoneCode = ''"
                              :class="{'_error': errors.phoneCode }"
                              class="code-form">
+                            <button class="code-form__switcher _underlined" @click="sendCodeToPhone">
+                                {{
+                                    countDown ? `Получить новый можно через 00:${convertedCountdown}` : "Получить новый код"
+                                }}
+                            </button>
                             <div class="error-message">{{ errors.phoneCode }}</div>
                             <div class="code-form__phone-code-box"></div>
                             <div class="code-form__phone-code-box"></div>
@@ -279,12 +281,6 @@
                             <masked-input class="code-form__phone-code-input"
                                           v-model="formData.phoneCode"
                                           mask="1111" placeholder-char="&#8205" placeholder=""/>
-                            class="code-form__phone-code-input" type="text">
-                            <button class="code-form__switcher _underlined" @click="sendCodeToPhone">
-                                {{
-                                    countDown ? `Получить новый можно через 00:${convertedCountdown}` : "Получить новый код"
-                                }}
-                            </button>
                         </div>
                         <div v-else-if="authMethod === 'phone' && !currentUser" class="phone-form">
                             <div @focusin="errors.phone = ''"
