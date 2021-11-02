@@ -1,13 +1,7 @@
 @use "variables";
-
-.email-form {
+.phone-form {
   display: grid;
-  grid-template-areas:
-        "email password"
-        "btn btn"
-        "switch switch";
   justify-content: start;
-  grid-gap: 1.9rem;
   margin-top: 4.2rem;
 
   &__input-container {
@@ -20,14 +14,16 @@
       &:after {
         bottom: -1.6rem;
         opacity: 1;
-        content: "Пароль указан некорректно"
+        content: "Неправильно введен телефон"
       }
     }
   }
 
+  &__btn {
+    margin-top: 2.1rem;
+  }
+
   &__switcher {
-    grid-area: switch;
-    justify-self: start;
-    margin-left: 8.8rem;
+    margin-top: 2.53rem;
   }
 }

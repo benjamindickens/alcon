@@ -1,0 +1,55 @@
+@use "variables";
+
+.new-user-form {
+  margin-top: 1.2rem;
+  display: grid;
+  grid-template-columns: repeat(2,auto);
+  justify-content: start;
+  grid-gap: 1.9rem;
+  position: relative;
+
+  &__agreement {
+    position: absolute;
+    bottom: 0;
+    right: -8rem;
+
+    & div {
+      max-width: 37rem;
+      font-size: 1.3rem;
+      line-height: 1.7rem;
+    }
+  }
+
+  &__checkbox {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+
+    & + label {
+      display: inline-flex;
+      align-items: flex-start;
+      user-select: none;
+    }
+
+    & + label::before {
+      content: "";
+      display: inline-block;
+      width: 2.2rem;
+      height: 2.2rem;
+      flex-shrink: 0;
+      flex-grow: 0;
+      border: 1px solid variables.$main-white;
+      border-radius: 2px;
+      margin-right: .8rem;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: 95% 100%;
+      cursor: pointer;
+    }
+
+    &:checked + label::before {
+      background-color: variables.$main-white;
+      background-image: url("../images/desktop/block-3/form-checkbox.svg");
+    }
+  }
+}
