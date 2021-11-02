@@ -119,8 +119,11 @@ const app = new Vue({
                         this.formData.phoneCode = '';
                         this.errors.phoneCode = "Неправильно введен код";
                     } else {
+                        // alreadyExist = "userData";
+
                         if (alreadyExist) {
-                            this.currentUser = true;
+                            this.currentUser = alreadyExist;
+
                         } else {
                             this.registerNewUser = true;
                         }
@@ -168,6 +171,17 @@ const app = new Vue({
                     validData = false;
                     this.errors.sum = "Введите сумму с копейками";
                 }
+
+                if(!this.validation.date) {
+                    validData = false;
+                    this.errors.date = "Введите дату в формате ДД. ММ. ГГГГ";
+                }
+
+                if(!this.validation.time){
+                    validData = false;
+                    this.errors.time = "Введите время в формате ЧЧ:ММ";
+                }
+
                 for (const [field, value] of Object.entries(this.checkData)) {
                     if (value === "") {
                         validData = false;
@@ -189,7 +203,7 @@ const app = new Vue({
             },
             registration() {
                 let validData = true;
-                if(!this.validation.email) {
+                if (!this.validation.email) {
                     validData = false;
                     this.errors.email = "введите корректный E-mail"
                 }
@@ -201,7 +215,7 @@ const app = new Vue({
                     this.errors.password = "Пароли не совпадают";
                 }
                 for (const [field, value] of Object.entries(this.formData)) {
-                    if (value === "") {
+                    if (!value) {
                         validData = false;
                         this.errors[field] = "Поле обязательно для заполнения"
                     }
@@ -241,7 +255,7 @@ const app = new Vue({
                         this.formData.password = "";
                         this.errors.password = "Пароль указан некорректно";
                     } else {
-                        console.log("send")
+                        this.currentUser = {name: "from bd"}
                     }
                 } else {
                     this.errors.email = "введите корректный E-mail"
