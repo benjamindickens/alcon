@@ -9,7 +9,8 @@ const app = new Vue({
         },
         data() {
             return {
-                qr: "",
+                currentQr: "",
+                uploadedQr: "",
                 currentUser: "pig",
                 authMethod: "phone",
                 gettingPhoneCode: false,
@@ -21,6 +22,7 @@ const app = new Vue({
                 popupsInfo: {
                     handmade: "Введите данные чека"
                 },
+                error: null,
                 currentPopupTitle: false,
                 phoneCode: "",
                 formData: {
@@ -71,6 +73,9 @@ const app = new Vue({
                 }
             }
         }, watch: {
+            currentQr(val) {
+                console.log(val)
+            },
             'checkData.date'(val) {
                 this.maskedValidation(val, "date", "_")
             },
@@ -116,6 +121,9 @@ const app = new Vue({
             },
             'formData.agreement'(val) {
                 this.checkIsEmpty(val, "agreement")
+            },
+            '$refs.checkUpload.$el.files'(val) {
+                console.log(val, "imgs updated")
             },
             async phoneCode(val) {
                 if (![...val].some(isNaN)) {
@@ -170,7 +178,22 @@ const app = new Vue({
         },
         methods: {
             onDecode(qr) {
-                this.qr = qr
+                this.uploadedQr = qr;
+                console.log(qr)
+                if (!this.uploadedQr) {
+                    this.initUploadCheck("error")
+                }
+            },
+            async onDetect(promise) {
+                try {
+                    const {
+                        content,
+                        location
+                    } = await promise
+                    console.log(content, location)
+                } catch (error) {
+                    console.log("gavno")
+                }
             },
             initUploadCheck(method) {
                 this.currentPopup.name = method;
