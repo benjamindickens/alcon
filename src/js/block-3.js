@@ -10,7 +10,7 @@ const app = new Vue({
         data() {
             return {
                 uploadedQr: "",
-                currentUser: "pig",
+                currentUser: null,
                 authMethod: "phone",
                 gettingPhoneCode: false,
                 countDown: 0,
@@ -307,7 +307,7 @@ const app = new Vue({
                     }
 
                     //    феик дата
-                    this.currentUser = "Ben"
+                    this.currentUser = {name: this.formData.name}
                 }
             },
             validateSum(value) {
