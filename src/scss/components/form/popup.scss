@@ -51,7 +51,7 @@
     }
   }
 
-  &__container._error {
+  &__container._error, &__container._manualCheck {
     width: 85rem;
 
     & .popup__title {

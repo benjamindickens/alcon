@@ -179,6 +179,7 @@ const app = new Vue({
 
                 const img = this.$refs.checkUpload.$el.files[0];
                 try {
+                    console.log(img)
                     //отправка фотки чека на ручную проверку
                     // const res = await this.submitForm("http://localhost/sendImg", img);
                     this.initUploadCheck("manualCheck")
@@ -209,6 +210,7 @@ const app = new Vue({
             initUploadCheck(method) {
                 this.currentPopup.name = method;
                 this.currentPopup.title = this.popupsInfo[method];
+                this.popupOpened = false;
                 this.popupOpened = true;
             },
             resetFields(...currentData) {
@@ -257,7 +259,8 @@ const app = new Vue({
                 }
                 if (validData) {
                     try {
-                        const res = await this.submitForm("http://localhost/uploadCheck", this.checkData);
+                        //загрузка данных чека
+                        // const res = await this.submitForm("http://localhost/uploadCheck", this.checkData);
                         this.popupOpened = false;
                         this.successOperation = true;
 
