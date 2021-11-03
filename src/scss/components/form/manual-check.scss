@@ -1,0 +1,37 @@
+@use "../variables";
+
+.manual-check {
+  margin-left: 4rem;
+
+  &__text-container {
+    max-width: 69rem;
+    margin-top: 1.6rem;
+    display: grid;
+    grid-gap: 2.5rem;
+  }
+
+  &__btns-container {
+    justify-content: start;
+    margin-top: 4rem;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 2rem;
+    grid-template-areas: "none again"
+  "scan handmade";
+  }
+
+  &__btn {
+    &._scan {
+      grid-area: scan;
+    }
+    &._again {
+      grid-area: again;
+    }
+    &._handmade {
+      grid-area: handmade;
+    }
+    &._send {
+      grid-area: send;
+    }
+  }
+}

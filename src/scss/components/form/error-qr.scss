@@ -33,5 +33,22 @@
     display: grid;
     grid-template-columns: auto auto;
     grid-gap: 2rem;
+    grid-template-areas: "scan again"
+  "handmade send";
+  }
+
+  &__btn {
+    &._scan {
+      grid-area: scan;
+    }
+    &._again {
+      grid-area: again;
+    }
+    &._handmade {
+      grid-area: handmade;
+    }
+    &._send {
+      grid-area: send;
+    }
   }
 }

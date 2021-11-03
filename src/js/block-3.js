@@ -74,9 +74,6 @@ const app = new Vue({
                 }
             }
         }, watch: {
-            currentQr(val) {
-                console.log(val)
-            },
             'checkData.date'(val) {
                 this.maskedValidation(val, "date", "_")
             },
@@ -179,7 +176,6 @@ const app = new Vue({
 
                 const img = this.$refs.checkUpload.$el.files[0];
                 try {
-                    console.log(img)
                     //отправка фотки чека на ручную проверку
                     // const res = await this.submitForm("http://localhost/sendImg", img);
                     this.initUploadCheck("manualCheck")
@@ -257,12 +253,16 @@ const app = new Vue({
                         this.errors[field] = "Поле обязательно для заполнения"
                     }
                 }
+
+                this.checkData.sum = parseFloat(this.checkData.sum).toFixed(2);
+
                 if (validData) {
                     try {
                         //загрузка данных чека
                         // const res = await this.submitForm("http://localhost/uploadCheck", this.checkData);
                         this.popupOpened = false;
                         this.successOperation = true;
+                        this.resetFields("checkData")
 
                     } catch (e) {
                         //обработка ошибок

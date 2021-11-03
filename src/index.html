@@ -182,22 +182,40 @@
                             </ol>
 
                             <div class="error-qr__btns-container">
-                                <button @click="successOperation = false" class="error-qr__btn _form-btn">
+                                <button @click="successOperation = false" class="error-qr__btn _form-btn _scan">
                                     Сканировать QR-код
                                 </button>
-                                <button @click="popupOpened = false" class="error-qr__btn _form-btn">
+                                <button @click="popupOpened = false" class="error-qr__btn _form-btn _again">
                                     ЗАГРУЗИТЬ ДРУГОЙ ЧЕК
                                 </button>
-                                <button @click="initUploadCheck('handmade')" class="error-qr__btn _form-btn">
+                                <button @click="initUploadCheck('handmade')" class="error-qr__btn _form-btn _handmade">
                                     Отправить данные чека
                                 </button>
-                                <button @click="sendToCheck" class="error-qr__btn _form-btn">
+                                <button @click="sendToCheck" class="error-qr__btn _form-btn _send">
                                     Отправить на ручную проверку
                                 </button>
                             </div>
                         </div>
                         <div v-else-if="currentPopup.name === 'manualCheck'" class="popup__manual-check manual-check">
-<h1>xyi</h1>
+                            <div class="manual-check__text-container">
+                                <p> Спасибо! Ваш чек загружен и отправляется на проверку!</p>
+                                <p> Уже совсем скоро мы начислим вам бонусные баллы. Отслеживайте статус обработки чека
+                                    в Личном кабинете в разделе “История начисления баллов!</p>
+                                <p class="_bold">Хотите загрузить еще один чек?</p>
+                            </div>
+                            <div class="manual-check__btns-container">
+                                <button @click="popupOpened = false" class="manual-check__btn _form-btn _again">
+                                    ЗАГРУЗИТЬ ДРУГОЙ ЧЕК
+                                </button>
+                                <button @click="successOperation = false" class="manual-check__btn _form-btn _scan">
+                                    Сканировать QR-код
+                                </button>
+                                <button @click="initUploadCheck('handmade')" class="error-qr__btn _form-btn _handmade">
+                                    Отправить данные чека
+                                </button>
+                            </div>
+
+
                         </div>
 
                     </div>
