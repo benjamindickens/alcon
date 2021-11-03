@@ -3,9 +3,30 @@
 .final-screen {
   padding: 13.3rem 18rem;
 
+  @media (max-width: variables.$tablet) {
+    padding: 0 4em;
+  }
+
+  @media (max-width: variables.$mobile) {
+
+  }
+
+
   &__title {
     font-size: 3.2rem;
     margin-left: 0;
+
+
+    @media (max-width: variables.$tablet) {
+      max-width: 65rem;
+      font-size: 4.2rem;
+      line-height: 4.6rem;
+    }
+
+    @media (max-width: variables.$mobile) {
+
+    }
+
   }
 
   &__text-container {
@@ -13,6 +34,16 @@
     margin-top: 8rem;
     display: grid;
     grid-gap: 2.5rem;
+
+    @media (max-width: variables.$tablet) {
+      max-width: 65rem;
+      margin-top: 4rem;
+    }
+
+    @media (max-width: variables.$mobile) {
+
+    }
+
   }
 
   &__btns-container {
@@ -21,5 +52,13 @@
     justify-content: start;
     grid-auto-flow: column;
     grid-gap: 1.9rem;
+
+    @media (max-width: variables.$tablet) {
+      margin-top: 5.6rem;
+    }
+
+    @media (max-width: variables.$mobile) {
+
+    }
   }
 }

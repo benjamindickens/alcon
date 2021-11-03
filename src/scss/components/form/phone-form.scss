@@ -5,20 +5,47 @@
   justify-content: start;
   margin-top: 4.2rem;
 
+  @media (max-width: variables.$tablet) {
+    margin-top:2.4rem;
+  }
+
+  @media (max-width: variables.$mobile) {
+
+  }
+
+
   &__input-container {
 
     &._error {
       & .error-message {
-        bottom: -1.6rem;
+        bottom: -1.4rem;
       }
     }
   }
 
   &__btn {
     margin-top: 2.1rem;
+
+
+    @media (max-width: variables.$tablet) {
+      margin-top: 1.6rem;
+    }
+
+    @media (max-width: variables.$mobile) {
+
+    }
   }
 
   &__switcher {
     margin-top: 2.53rem;
+
+
+    @media (max-width: variables.$tablet) {
+      margin-top: 1.6rem;
+    }
+
+    @media (max-width: variables.$mobile) {
+
+    }
   }
 }

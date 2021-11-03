@@ -10,7 +10,7 @@ const app = new Vue({
         data() {
             return {
                 uploadedQr: "",
-                currentUser: "",
+                currentUser: true,
                 authMethod: "phone",
                 gettingPhoneCode: false,
                 countDown: 0,
@@ -354,6 +354,7 @@ const app = new Vue({
                     }
 
                     //    феик дата
+                    this.registerNewUser = false;
                     this.currentUser = {name: this.formData.name}
                 }
             },

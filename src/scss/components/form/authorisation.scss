@@ -3,6 +3,13 @@
 .authorisation {
   margin-top: 7rem;
 
+  @media (max-width: variables.$tablet) {
+    margin-top: 5.8rem;
+  }
+
+  @media (max-width: variables.$mobile) {
+
+  }
 
   &__title {
     position: relative;
@@ -23,3 +30,4 @@
   }
 
 }
+

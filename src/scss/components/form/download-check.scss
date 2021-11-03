@@ -1,9 +1,28 @@
 @use "../variables";
+
 .download-check {
   margin-top: 4rem;
 
+  @media (max-width: variables.$tablet) {
+    margin-top: 2.8rem;
+  }
+
+  @media (max-width: variables.$mobile) {
+
+  }
+
+
   &._active-user {
     margin-top: 9.5rem;
+
+
+    @media (max-width: variables.$tablet) {
+      margin-top: 6.8rem;
+    }
+
+    @media (max-width: variables.$mobile) {
+
+    }
   }
 
   &._extra-margin {
@@ -20,18 +39,34 @@
     grid-gap: 1.5rem;
     margin-top: 3.1rem;
     grid-template-areas: "scan upload handmade";
+
+
+    @media (max-width: variables.$tablet) {
+
+      grid-template-areas:
+        "scan upload"
+        "handmade none";
+    }
+
+    @media (max-width: variables.$mobile) {
+
+    }
+
   }
 
   &__btn {
     &._handmade {
       grid-area: handmade;
     }
+
     &._upload {
       grid-area: upload;
     }
+
     &._scan {
       grid-area: scan;
     }
+
     &._hidden-input {
       grid-area: upload;
     }
@@ -52,10 +87,10 @@
 }
 
 .download-check._active-user {
- & .download-check__btn {
-   color: variables.$main-white;
-   background: variables.$main-blue;
- }
+  & .download-check__btn {
+    color: variables.$main-white;
+    background: variables.$main-blue;
+  }
 
   & .download-check__tooltip {
     display: block;

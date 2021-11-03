@@ -106,7 +106,8 @@
 
     <section data-block-3>
         <div id="app">
-            <div class="block block-3" :class="{'_active-user':currentUser, '_final-screen': successOperation}">
+            <div class="block block-3"
+                 :class="{'_active-user':currentUser, '_final-screen': successOperation,'_phone': authMethod === 'phone', '_email': authMethod === 'email','_registration':registerNewUser}">
                 <div v-show="popupOpened" ref="popup" class="popup-overlay popup">
                     <div class="popup__container" :class="`_${currentPopup.name}`">
                         <div class="popup__close" @click="closePopup"></div>
@@ -244,7 +245,7 @@
 
                                 <div @focusin="errors.phone = ''"
                                      :class="{'_ok': validation.phone,'_error': errors.phone}"
-                                     class="new-user-form__input-container _main-input-container">
+                                     class="new-user-form__input-container _main-input-container _phone">
                                     <div class="error-message">{{ errors.phone }}</div>
                                     <masked-input class="new-user-form__input _email _main-input"
                                                   v-model="formData.phone"
@@ -263,7 +264,7 @@
 
                                 <div @focusin="errors.name = ''"
                                      :class="{'_ok': validation.name,'_error': errors.name}"
-                                     class="new-user-form__input-container _main-input-container _password">
+                                     class="new-user-form__input-container _main-input-container _name">
                                     <div class="error-message">{{ errors.name }}</div>
                                     <input class="new-user-form__input _main-input"
                                            type="text"
@@ -273,7 +274,7 @@
 
                                 <div @focusin="errors.rePassword = ''"
                                      :class="{'_ok': validation.rePassword,'_error': errors.rePassword}"
-                                     class="new-user-form__input-container _main-input-container _password">
+                                     class="new-user-form__input-container _main-input-container _rePassword">
                                     <div class="error-message">{{ errors.rePassword }}</div>
                                     <input class="new-user-form__input _main-input"
                                            type="password"
@@ -421,7 +422,7 @@
                 </div>
                 <div v-if="successOperation" class="block-3__content-wrapper final-screen">
                     <h1 class="final-screen__title _section-title _main-title _white">
-                        Поздравляем! Ваш чек зарегистрирован
+                        Поздравляем!<br class="_tablet"/> Ваш чек зарегистрирован
                     </h1>
                     <div class="final-screen__text-container">
                         <p> Вы стали участником розыгрыша Apple Watch и Digital-подписок! Розыгрыш состоится в прямом

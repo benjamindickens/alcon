@@ -9,31 +9,87 @@
   font-size: 1.8rem;
   line-height: 2.4rem;
 
-  &._active-user {
-    height: 89.1rem;
-    background: url("../images/desktop/block-3/background-activeUser.png") no-repeat center;
-    background-size: cover;
-  }
-
- &._final-screen {
-   background: url("../images/desktop/block-3/final-background.png") no-repeat center;
-   background-size: cover;
-   height: 100.4rem;
- }
-
   @media (max-width: variables.$tablet) {
-
+    height: 84.2rem;
+    background: url("../images/tablet/block-3/background.png") no-repeat center;
+    background-size: cover;
   }
 
   @media (max-width: variables.$mobile) {
 
   }
 
+  &._active-user {
+    height: 89.1rem;
+    background: url("../images/desktop/block-3/background-activeUser.png") no-repeat center;
+    background-size: cover;
+
+
+    @media (max-width: variables.$tablet) {
+      height: 80.4rem;
+      background: url("../images/tablet/block-3/background-activeUser.png") no-repeat center;
+      background-size: cover;
+    }
+
+    @media (max-width: variables.$mobile) {
+
+    }
+
+  }
+
+  &._final-screen {
+    background: url("../images/desktop/block-3/final-background.png") no-repeat center;
+    background-size: cover;
+    height: 100.4rem;
+
+    @media (max-width: variables.$tablet) {
+      background: url("../images/tablet/block-3/final-background.png") no-repeat center;
+      background-size: cover;
+      height: 67.1rem;
+
+    }
+
+    @media (max-width: variables.$mobile) {
+
+    }
+  }
+
+  &._email {
+    @media (max-width: variables.$tablet) {
+      background: url("../images/tablet/block-3/background-email.png") no-repeat center;
+      background-size: cover;
+      height: 91.4rem;
+    }
+
+    & .download-check {
+      @media (max-width: variables.$tablet) {
+        margin-top: 2.2rem;
+      }
+    }
+  }
+
+  &._registration {
+    @media (max-width: variables.$tablet) {
+      background: url("../images/tablet/block-3/background-registration.png") no-repeat center;
+      background-size: cover;
+      height: 111.7rem;
+    }
+  }
+
+
   &__stages-container {
     margin: 7.1rem 0 0 18.3rem;
     display: grid;
     justify-content: start;
     align-content: start;
+
+    @media (max-width: variables.$tablet) {
+      margin: 1.4rem 0 0 12.3rem;
+    }
+
+    @media (max-width: variables.$mobile) {
+
+    }
   }
 
   &__stage {
@@ -45,6 +101,9 @@
     &._final {
       margin-top: 5.86rem;
       max-width: 75rem;
+      @media (max-width: variables.$tablet) {
+        margin-top: 2.5rem;
+      }
     }
   }
 
@@ -53,6 +112,15 @@
     line-height: 1.4rem;
     margin-top: 2.4rem;
     max-width: 65rem;
+
+    @media (max-width: variables.$tablet) {
+      max-width: 70rem;
+    }
+
+    @media (max-width: variables.$mobile) {
+
+    }
+
   }
 
 }

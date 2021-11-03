@@ -241,11 +241,21 @@ a, a:active, a:hover {
   height: 6.2rem;
   width: 35rem;
   position: relative;
-  padding: 2.8rem;
+  padding:0 2.8rem;
   display: grid;
   align-items: center;
   color: variables.$main-white;
   font-size: 1.8rem;
+
+  @media (max-width: variables.$tablet) {
+    padding:0 2.4rem;
+    height: 5.8rem;
+  }
+
+  @media (max-width: variables.$mobile) {
+
+  }
+
 
   &::placeholder {
     color: variables.$placeholder;
@@ -298,6 +308,16 @@ a, a:active, a:hover {
   border-radius: 95px;
   color: variables.$main-blue;
   background: variables.$main-white;
+
+
+  @media (max-width: variables.$tablet) {
+    height: 5.8rem;
+  }
+
+  @media (max-width: variables.$mobile) {
+
+  }
+
 }
 
 ._disabled {

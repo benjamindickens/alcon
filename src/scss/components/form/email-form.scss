@@ -10,6 +10,21 @@
   grid-gap: 1.9rem;
   margin-top: 4.2rem;
 
+  @media (max-width: variables.$tablet) {
+    margin-top: 2.4rem;
+    grid-gap: 1.6rem;
+    grid-template-areas:
+        "email"
+        "password"
+        "btn"
+        "switch";
+  }
+
+  @media (max-width: variables.$mobile) {
+
+  }
+
+
   &__input-container {
 
     &._error {
