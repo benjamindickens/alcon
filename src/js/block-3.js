@@ -173,8 +173,27 @@ const app = new Vue({
             }
         },
         methods: {
-            onScan (result) {
-                this.uploadedQr = result
+            paintBoundingBox(detectedCodes, ctx) {
+                for (const detectedCode of detectedCodes) {
+                    const {boundingBox: {x, y, width, height}} = detectedCode
+
+                    ctx.lineWidth = 2
+                    ctx.strokeStyle = '#007bff'
+                    ctx.strokeRect(x, y, width, height)
+                }
+            },
+            onScan(result) {
+                this.uploadedQr = result;
+                try {
+                    //отправка кьюар кода
+                    // const res = await this.submitForm("http://localhost/sendQr", this.uploadedQr);
+                    this.currentPopup = {};
+                    this.popupOpened = false;
+                    this.successOperation = true;
+                } catch (e) {
+                    console.error(e)
+                }
+
             },
             async onInit(promise) {
                 try {

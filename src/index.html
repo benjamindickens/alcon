@@ -215,10 +215,9 @@
                                 </button>
                             </div>
                         </div>
-                        <div v-else-if="currentPopup.name === 'scan'" class="popup__manual-check scan">
-                            <p class="error">{{ error }}</p>
-                            <p class="decode-result">Last result: <b>{{ uploadedQr }}</b></p>
-                            <qrcode-stream @decode="onScan" @init="onInit"/>
+                        <div v-else-if="currentPopup.name === 'scan'" class="popup__scan">
+                            <p class="popup__error">{{ error }}</p>
+                            <qrcode-stream :track="paintBoundingBox" @decode="onScan" @init="onInit"/>
                         </div>
 
 

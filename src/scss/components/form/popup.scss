@@ -29,6 +29,7 @@
   }
 
   &__container {
+    box-shadow: variables.$box-shadow;
     align-content: start;
     position: relative;
     margin-top: 6rem;
@@ -74,6 +75,8 @@
       margin-top: 4rem;
       margin-left: 4rem;
       font-family: variables.$font-regular;
+      font-weight: 400;
+      font-size: 1.8rem;
     }
 
     &:after {
@@ -88,5 +91,16 @@
     font-size: 4.3rem;
     margin-top: 3.1rem;
     margin-left: 4.6rem;
+  }
+
+  .popup__scan {
+    justify-self: center;
+    margin-top: 2rem;
+  }
+
+  .qrcode-stream-wrapper {
+    justify-self: center;
+    width: 48rem !important;
+    height: 36rem !important;
   }
 }
