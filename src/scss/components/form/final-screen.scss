@@ -4,11 +4,11 @@
   padding: 13.3rem 18rem;
 
   @media (max-width: variables.$tablet) {
-    padding: 0 4em;
+    padding: 0 4rem;
   }
 
   @media (max-width: variables.$mobile) {
-
+    padding: 0 1.6rem;
   }
 
 
@@ -24,6 +24,9 @@
     }
 
     @media (max-width: variables.$mobile) {
+      font-size: 2.8rem;
+      line-height: 3rem;
+      margin-left: 0 !important;
 
     }
 
@@ -41,7 +44,8 @@
     }
 
     @media (max-width: variables.$mobile) {
-
+      grid-gap: 1.5rem;
+      margin-top: 2.4rem;
     }
 
   }
@@ -58,7 +62,9 @@
     }
 
     @media (max-width: variables.$mobile) {
-
+      margin-top: 2.6rem;
+      grid-gap: 1.9rem;
+      grid-auto-flow: row;
     }
   }
 }

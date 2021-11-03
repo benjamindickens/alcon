@@ -98,5 +98,8 @@
 
   & .download-check__tooltip {
     display: block;
+    @media (max-width: variables.$mobile) {
+      font-size: 1.2rem;
+    }
   }
 }

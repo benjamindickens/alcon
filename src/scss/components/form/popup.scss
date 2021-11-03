@@ -27,6 +27,13 @@
     position: absolute;
     background: url("../images/desktop/block-3/close-btn.svg") no-repeat center;
     background-size: cover;
+
+    @media (max-width: variables.$mobile) {
+      width: 1.6rem;
+      height: 1.6rem;
+      top: 1.6rem;
+      right: 1.6rem;
+    }
   }
 
   &__container {
@@ -39,6 +46,10 @@
     display: grid;
     background: url("../images/desktop/block-3/popup-background.svg") no-repeat center;
     background-size: cover;
+
+    @media (max-width: variables.$mobile) {
+
+    }
 
     &:after {
       position: absolute;
@@ -72,12 +83,23 @@
     background: variables.$light-blue;
     display: grid;
 
+    @media (max-width: variables.$mobile) {
+      width: 28.8rem;
+      height: 39.2rem;
+    }
+
     & .popup__title {
       margin-top: 4rem;
       margin-left: 4rem;
       font-family: variables.$font-regular;
       font-weight: 400;
       font-size: 1.8rem;
+      @media (max-width: variables.$mobile) {
+        font-family: variables.$font-bold;
+        margin-left: 1.6rem;
+        max-width: 25rem;
+        line-height: 2.5rem;
+      }
     }
 
     &:after {
@@ -92,6 +114,8 @@
     font-size: 4.3rem;
     margin-top: 3.1rem;
     margin-left: 4.6rem;
+
+
   }
 
   .popup__scan {
@@ -100,8 +124,16 @@
   }
 
   .qrcode-stream-wrapper {
+    background: black;
     justify-self: center;
     width: 48rem !important;
     height: 36rem !important;
+
+
+    @media (max-width: variables.$mobile) {
+      width: 25rem !important;
+      height: 25rem !important;
+    }
+
   }
 }
