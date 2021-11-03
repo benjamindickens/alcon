@@ -372,7 +372,7 @@ const app = new Vue({
                 return (false)
             },
             switchAuthMethod() {
-                this.resetFields("formData")
+                this.resetFields("formData", "errors")
                 this.authMethod = this.authMethod === "phone" ? "email" : "phone";
             },
             async authWithEmail() {

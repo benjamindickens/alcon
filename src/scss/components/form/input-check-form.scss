@@ -33,24 +33,25 @@
   }
 
   &__input-container {
-
-    &._sum {
-      grid-area: sum;
-    }
-    &._date {
-      grid-area: date;
-    }
-    &._time {
-      grid-area: time;
-    }
-    &._fn {
-      grid-area: fn;
-    }
-    &._fd {
-      grid-area:fd;
-    }
-    &._fdp {
-      grid-area: fdp;
+    @media (max-width: variables.$mobile) {
+      &._sum {
+        grid-area: sum;
+      }
+      &._date {
+        grid-area: date;
+      }
+      &._time {
+        grid-area: time;
+      }
+      &._fn {
+        grid-area: fn;
+      }
+      &._fd {
+        grid-area: fd;
+      }
+      &._fdp {
+        grid-area: fdp;
+      }
     }
 
     &._error {

@@ -19,7 +19,7 @@
       position: relative;
 
       span {
-        @media (max-width: variables.$tablet) {
+        @media (max-width: variables.$mobile) {
           position: absolute;
           width: 20rem;
         }
