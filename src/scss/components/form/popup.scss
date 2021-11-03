@@ -13,6 +13,7 @@
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
+  overflow: auto;
 
   &._init {
     opacity: 1;
@@ -64,16 +65,45 @@
     }
   }
 
+  &__container._handmade {
+    @media (max-width: variables.$mobile) {
+      height: 87rem;
+      background: url("../images/mobile/block-3/background-handmade.png") no-repeat center;
+      background-size: cover;
+      width: 28.8rem;
+      margin: 9rem 0 4.1rem;
+      &:after {
+        display: none;
+      }
+    }
+  }
+
+
   &__container._error, &__container._manualCheck {
     width: 85rem;
 
     & .popup__title {
       margin-top: 3.2rem;
       margin-left: 4rem;
+
+      @media (max-width: variables.$mobile) {
+        margin-top: 4rem;
+        margin-left: 1.6rem;
+      }
+
     }
 
     &:after {
       display: none;
+    }
+
+    @media (max-width: variables.$mobile) {
+      margin: 9rem 0 4.1rem;
+      height: 56rem;
+      width: 28.8rem;
+      background: url("../images/mobile/block-3/background-error.png") no-repeat center;
+      background-size: cover;
+
     }
   }
 
@@ -115,7 +145,13 @@
     margin-top: 3.1rem;
     margin-left: 4.6rem;
 
+    @media (max-width: variables.$mobile) {
+      font-size: 1.8rem;
+      line-height: 2.5rem;
+      margin-top: 4rem;
+      margin-left: 1.6rem;
 
+    }
   }
 
   .popup__scan {

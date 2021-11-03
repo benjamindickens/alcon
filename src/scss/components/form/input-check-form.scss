@@ -8,11 +8,51 @@
   margin-top: 3.1rem;
   align-content: start;
   justify-content: start;
+
+  @media (max-width: variables.$mobile) {
+    margin-left: 0;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    grid-gap: 1.6rem;
+    margin-top: 30rem;
+    grid-template-areas: "sum"
+    "date"
+    "time"
+    "fn"
+    "fd"
+    "fdp";
+  }
+
+
   &__btn {
     grid-column: 2/ span 1;
+
+    @media (max-width: variables.$mobile) {
+      grid-column: unset;
+    }
   }
 
   &__input-container {
+
+    &._sum {
+      grid-area: sum;
+    }
+    &._date {
+      grid-area: date;
+    }
+    &._time {
+      grid-area: time;
+    }
+    &._fn {
+      grid-area: fn;
+    }
+    &._fd {
+      grid-area:fd;
+    }
+    &._fdp {
+      grid-area: fdp;
+    }
+
     &._error {
       & .error-message {
         bottom: -1.3rem;

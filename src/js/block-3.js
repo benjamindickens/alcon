@@ -10,7 +10,7 @@ const app = new Vue({
         data() {
             return {
                 uploadedQr: "",
-                currentUser: true,
+                currentUser: false,
                 authMethod: "phone",
                 gettingPhoneCode: false,
                 countDown: 0,
@@ -300,10 +300,11 @@ const app = new Vue({
                     }
                 }
 
-                this.checkData.sum = parseFloat(this.checkData.sum).toFixed(2);
 
                 if (validData) {
+
                     try {
+                        this.checkData.sum = parseFloat(this.checkData.sum).toFixed(2);
                         //загрузка данных чека
                         // const res = await this.submitForm("http://localhost/uploadCheck", this.checkData);
                         this.popupOpened = false;

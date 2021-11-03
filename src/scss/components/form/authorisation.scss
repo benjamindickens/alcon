@@ -16,16 +16,25 @@
     width: fit-content;
 
     &._active-user {
-      &:after {
-        height: 1.8rem;
-        width: 2.4rem;
-        content: " ";
-        right: -4rem;
-        position: absolute;
-        background: url("../images/desktop/block-3/checkbox-no-circle.svg") no-repeat center;
-        background-size: cover;
-      }
+      position: relative;
 
+      span {
+        @media (max-width: variables.$tablet) {
+          position: absolute;
+          width: 20rem;
+        }
+
+        &:after {
+          top: 0;
+          height: 1.8rem;
+          width: 2.4rem;
+          content: " ";
+          right: -3rem;
+          position: absolute;
+          background: url("../images/desktop/block-3/checkbox-no-circle.svg") no-repeat center;
+          background-size: cover;
+        }
+      }
     }
   }
 

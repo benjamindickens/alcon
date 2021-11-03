@@ -65,6 +65,13 @@
       margin-top: 2.6rem;
       grid-gap: 1.9rem;
       grid-auto-flow: row;
+      justify-content: center;
+    }
+  }
+
+  &__btn {
+    @media (max-width: variables.$mobile) {
+      width: 28.8rem;
     }
   }
 }

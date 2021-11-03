@@ -3,11 +3,20 @@
 .error-qr {
   margin-left: 4rem;
 
+  @media (max-width: variables.$mobile) {
+    margin-left: 1.6rem;
+    margin-right: 1.6rem;
+  }
+
+
   &__attention {
     padding-left: 2.5rem;
     margin-top: 2.6rem;
     position: relative;
     color: variables.$main-red;
+    @media (max-width: variables.$mobile) {
+      margin-top: 1.6rem;
+    }
 
     &:after {
       position: absolute;
@@ -25,6 +34,12 @@
   &__rules {
     margin-top: 4rem;
     margin-left: 2rem;
+
+
+    @media (max-width: variables.$mobile) {
+      margin-top: 2rem;
+    }
+
   }
 
   &__btns-container {
@@ -35,18 +50,30 @@
     grid-gap: 2rem;
     grid-template-areas: "scan again"
   "handmade send";
+
+    @media (max-width: variables.$mobile) {
+      grid-template-columns: auto;
+      grid-template-areas: "scan"
+      "handmade"
+      "again"
+  "send";
+    }
+
   }
 
   &__btn {
     &._scan {
       grid-area: scan;
     }
+
     &._again {
       grid-area: again;
     }
+
     &._handmade {
       grid-area: handmade;
     }
+
     &._send {
       grid-area: send;
     }

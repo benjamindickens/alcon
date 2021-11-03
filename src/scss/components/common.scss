@@ -110,8 +110,9 @@ select:-webkit-autofill:focus {
 }
 
 
-a, a:active, a:hover {
+a {
   text-decoration: none;
+  color: inherit;
 }
 
 

@@ -3,11 +3,21 @@
 .manual-check {
   margin-left: 4rem;
 
+  @media (max-width: variables.$mobile) {
+    margin-left: 1.6rem;
+    margin-right: 1.6rem;
+  }
+
+
   &__text-container {
     max-width: 69rem;
     margin-top: 1.6rem;
     display: grid;
     grid-gap: 2.5rem;
+
+    @media (max-width: variables.$mobile) {
+      max-width: 25rem;
+    }
   }
 
   &__btns-container {
@@ -18,18 +28,27 @@
     grid-gap: 2rem;
     grid-template-areas: "none again"
   "scan handmade";
+
+    @media (max-width: variables.$mobile) {
+      grid-template-areas: "scan"
+      "handmade"
+      "again";
+    }
   }
 
   &__btn {
     &._scan {
       grid-area: scan;
     }
+
     &._again {
       grid-area: again;
     }
+
     &._handmade {
       grid-area: handmade;
     }
+
     &._send {
       grid-area: send;
     }
