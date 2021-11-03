@@ -10,7 +10,7 @@ const app = new Vue({
         data() {
             return {
                 uploadedQr: "",
-                currentUser: true,
+                currentUser: "",
                 authMethod: "phone",
                 gettingPhoneCode: false,
                 countDown: 0,
@@ -320,6 +320,7 @@ const app = new Vue({
             closePopup() {
                 this.popupOpened = false;
                 this.resetFields("formData", "checkData", "errors");
+                this.currentPopup = {};
             },
             async registration() {
 
@@ -433,8 +434,6 @@ const app = new Vue({
             })
         },
         created() {
-            //    request to get data if you loged in
-            //     this.currentUser = res;
         }
     })
 ;
