@@ -42,14 +42,18 @@
 
 
     @media (max-width: variables.$tablet) {
-
       grid-template-areas:
         "scan upload"
         "handmade none";
     }
 
     @media (max-width: variables.$mobile) {
-
+      margin-left: -1.6rem;
+      margin-top: 2.4rem;
+      grid-template-areas:
+        "scan"
+        "upload"
+        "handmade";
     }
 
   }

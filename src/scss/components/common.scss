@@ -155,6 +155,16 @@ a, a:active, a:hover {
   }
 }
 
+.block-3 {
+  & ._section-title {
+    @media (max-width: variables.$mobile) {
+      text-align: left;
+      margin-left: 6rem;
+    }
+  }
+}
+
+
 .main-content {
   margin-top: 5.7rem;
 
@@ -253,7 +263,10 @@ a, a:active, a:hover {
   }
 
   @media (max-width: variables.$mobile) {
-
+    width: 24.8rem;
+    height: 4.8rem;
+    font-size: 1.6rem;
+    line-height: 2rem;
   }
 
 
@@ -315,7 +328,10 @@ a, a:active, a:hover {
   }
 
   @media (max-width: variables.$mobile) {
-
+    width: 24.8rem;
+    height: 4.8rem;
+    font-size: 1.6rem;
+    line-height: 2rem;
   }
 
 }
@@ -337,6 +353,10 @@ a, a:active, a:hover {
   justify-self: center;
   font-weight: 800;
   font-family: variables.$font-extra-bold;
+  @media (max-width: variables.$mobile) {
+    font-size: 1.3rem;
+  }
+
 
   &:after {
     height: 100%;

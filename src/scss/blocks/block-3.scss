@@ -16,7 +16,13 @@
   }
 
   @media (max-width: variables.$mobile) {
-
+    font-size: 1.4rem;
+    position: relative;
+    line-height: 1.9rem;
+    padding: 4rem 0 0;
+    height: 92.7rem;
+    background: url("../images/mobile/block-3/background.png") no-repeat center;
+    background-size: cover;
   }
 
   &._active-user {
@@ -88,7 +94,7 @@
     }
 
     @media (max-width: variables.$mobile) {
-
+      margin: 0 0 0 7.2rem;
     }
   }
 
@@ -104,6 +110,9 @@
       @media (max-width: variables.$tablet) {
         margin-top: 2.5rem;
       }
+      @media (max-width: variables.$mobile) {
+        margin-top: 2.3rem;
+      }
     }
   }
 
@@ -118,7 +127,10 @@
     }
 
     @media (max-width: variables.$mobile) {
-
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      padding: 0 1.6rem 3.2rem;
     }
 
   }
