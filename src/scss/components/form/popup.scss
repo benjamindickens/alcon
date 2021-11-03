@@ -58,11 +58,28 @@
       margin-top: 3.2rem;
       margin-left: 4rem;
     }
+
     &:after {
       display: none;
     }
   }
 
+  &__container._scan {
+    height: 54rem;
+    width: 64rem;
+    background: variables.$light-blue;
+    display: grid;
+
+    & .popup__title {
+      margin-top: 4rem;
+      margin-left: 4rem;
+      font-family: variables.$font-regular;
+    }
+
+    &:after {
+      display: none;
+    }
+  }
 
   &__title {
     font-family: "OpenSans-Bold";

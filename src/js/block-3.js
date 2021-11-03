@@ -1,16 +1,16 @@
 import Vue from 'vue'
 import MaskedInput from 'vue-masked-input'
-import {QrcodeCapture} from 'vue-qrcode-reader'
+import {QrcodeStream, QrcodeCapture} from 'vue-qrcode-reader'
 
 const app = new Vue({
         el: '#app',
         components: {
-            MaskedInput, QrcodeCapture
+            MaskedInput, QrcodeCapture, QrcodeStream
         },
         data() {
             return {
                 uploadedQr: "",
-                currentUser: null,
+                currentUser: true,
                 authMethod: "phone",
                 gettingPhoneCode: false,
                 countDown: 0,
@@ -22,6 +22,7 @@ const app = new Vue({
                     handmade: "Введите данные чека",
                     error: "Обратите внимание!",
                     manualCheck: "Чек загружен",
+                    scan: "Пожалуйста, наведите камеру на QR-код",
                 },
                 error: null,
                 currentPopupTitle: false,
@@ -172,6 +173,32 @@ const app = new Vue({
             }
         },
         methods: {
+            onScan (result) {
+                this.uploadedQr = result
+            },
+            async onInit(promise) {
+                try {
+                    await promise
+                } catch (error) {
+                    if (error.name === 'NotAllowedError') {
+                        this.error = "ERROR: you need to grant camera access permission"
+                    } else if (error.name === 'NotFoundError') {
+                        this.error = "ERROR: no camera on this device"
+                    } else if (error.name === 'NotSupportedError') {
+                        this.error = "ERROR: secure context required (HTTPS, localhost)"
+                    } else if (error.name === 'NotReadableError') {
+                        this.error = "ERROR: is the camera already in use?"
+                    } else if (error.name === 'OverconstrainedError') {
+                        this.error = "ERROR: installed cameras are not suitable"
+                    } else if (error.name === 'StreamApiNotSupportedError') {
+                        this.error = "ERROR: Stream API is not supported in this browser"
+                    } else if (error.name === 'InsecureContextError') {
+                        this.error = 'ERROR: Camera access is only permitted in secure context. Use HTTPS or localhost rather than HTTP.';
+                    } else {
+                        this.error = `ERROR: Camera error (${error.name})`;
+                    }
+                }
+            },
             async sendToCheck() {
 
                 const img = this.$refs.checkUpload.$el.files[0];

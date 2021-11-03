@@ -182,7 +182,7 @@
                             </ol>
 
                             <div class="error-qr__btns-container">
-                                <button @click="successOperation = false" class="error-qr__btn _form-btn _scan">
+                                <button @click="initUploadCheck('scan')" class="error-qr__btn _form-btn _scan">
                                     Сканировать QR-код
                                 </button>
                                 <button @click="popupOpened = false" class="error-qr__btn _form-btn _again">
@@ -207,16 +207,20 @@
                                 <button @click="popupOpened = false" class="manual-check__btn _form-btn _again">
                                     ЗАГРУЗИТЬ ДРУГОЙ ЧЕК
                                 </button>
-                                <button @click="successOperation = false" class="manual-check__btn _form-btn _scan">
+                                <button @click="initUploadCheck('scan')" class="manual-check__btn _form-btn _scan">
                                     Сканировать QR-код
                                 </button>
                                 <button @click="initUploadCheck('handmade')" class="error-qr__btn _form-btn _handmade">
                                     Отправить данные чека
                                 </button>
                             </div>
-
-
                         </div>
+                        <div v-else-if="currentPopup.name === 'scan'" class="popup__manual-check scan">
+                            <p class="error">{{ error }}</p>
+                            <p class="decode-result">Last result: <b>{{ uploadedQr }}</b></p>
+                            <qrcode-stream @decode="onScan" @init="onInit"/>
+                        </div>
+
 
                     </div>
                 </div>
@@ -375,7 +379,7 @@
                              :class="{'_disabled': !currentUser, '_active-user': currentUser}">
                             <div class="download-check__title">Загрузите чек о покупке**</div>
                             <div class="download-check__container">
-                                <button @click="initUploadCheck('handmade')"
+                                <button @click="initUploadCheck('scan')"
                                         class="download-check__btn _form-btn _scan">
                                     Сканировать QR-код
                                 </button>
