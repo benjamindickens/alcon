@@ -20,7 +20,7 @@
   }
 
   @media (max-width: variables.$mobile) {
-
+    margin-left: -1.6rem
   }
 
 
@@ -55,6 +55,12 @@
     position: absolute;
     bottom: 0;
     right: -8rem;
+
+    @media (max-width: variables.$mobile) {
+      position: static;
+      margin-top: 1.15rem;
+    }
+
 
     & div {
       max-width: 37rem;

@@ -10,7 +10,7 @@ const app = new Vue({
         data() {
             return {
                 uploadedQr: "",
-                currentUser: null,
+                currentUser: true,
                 authMethod: "phone",
                 gettingPhoneCode: false,
                 countDown: 0,

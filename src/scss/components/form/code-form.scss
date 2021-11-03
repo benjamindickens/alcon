@@ -1,4 +1,5 @@
 @use "../variables";
+
 .code-form {
   width: fit-content;
   display: grid;
@@ -15,6 +16,10 @@
     margin: 5.2rem 0 8rem 2rem;
   }
 
+  @media (max-width: variables.$mobile) {
+    margin: 3.2rem 0 9.5rem -1.3em;
+    height: 4.8rem;
+  }
 
   &._error {
     .code-form__phone-code-box {
@@ -34,6 +39,11 @@
     color: white;
     background: transparent;
     font-family: variables.$font-bold;
+
+    @media (max-width: variables.$mobile) {
+      padding-left: 1.5rem;
+      letter-spacing: 4.1rem;
+    }
   }
 
   &__phone-code-box {
@@ -42,10 +52,20 @@
     background: variables.$main-blue;
     border-radius: 10px;
 
+
+    @media (max-width: variables.$mobile) {
+      width: 4.6rem;
+      height: 4.6rem;
+    }
   }
 
   &__switcher {
     position: absolute;
     bottom: -4.8rem;
+
+    @media (max-width: variables.$mobile) {
+      top: 7rem;
+      bottom: unset;
+    }
   }
 }

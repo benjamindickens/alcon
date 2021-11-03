@@ -356,6 +356,12 @@ a, a:active, a:hover {
   @media (max-width: variables.$mobile) {
     font-size: 1.3rem;
   }
+  @media (max-width: variables.$mobile) {
+    text-decoration: underline;
+    &:after {
+      display: none;
+    }
+  }
 
 
   &:after {

@@ -67,9 +67,26 @@
       height: 91.4rem;
     }
 
+    @media (max-width: variables.$mobile) {
+      background: url("../images/mobile/block-3/background-email.png") no-repeat center;
+      background-size: cover;
+      height: 100rem;
+    }
+
+    & .email-form__switcher {
+      @media (max-width: variables.$mobile) {
+        justify-self: center;
+        margin-left: 0;
+      }
+    }
+
     & .download-check {
       @media (max-width: variables.$tablet) {
         margin-top: 2.2rem;
+      }
+
+      @media (max-width: variables.$mobile) {
+        margin-top: 3.4rem;
       }
     }
   }
@@ -80,7 +97,14 @@
       background-size: cover;
       height: 111.7rem;
     }
+
+    @media (max-width: variables.$mobile) {
+      background: url("../images/mobile/block-3/background-registration.png") no-repeat center;
+      background-size: cover;
+      height: 126.3rem;
+    }
   }
+
 
 
   &__stages-container {
@@ -112,6 +136,7 @@
       }
       @media (max-width: variables.$mobile) {
         margin-top: 2.3rem;
+        padding-right: 1rem;
       }
     }
   }
